@@ -1,3 +1,6 @@
+//O(log n)
+
+
 var binarysearch = function(array, target) {
   var leftIndex = 0;
   var rightIndex = array.length - 1;
@@ -10,13 +13,12 @@ var binarysearch = function(array, target) {
       rightIndex = midpoint - 1;
 
     } else if (array[midpoint] < target) {
-      leftIndex = midpoint + 1
+      leftIndex = midpoint + 1;
     }
   }
   return -1;
 }
 
-var testArray = [1, 23, 34, 56, 123, 54]
 
 //recursive solution
 var recBinarysearch = function(array, target, leftIndex = 0, rightIndex = array.length - 1) {
@@ -36,12 +38,8 @@ var recBinarysearch = function(array, target, leftIndex = 0, rightIndex = array.
 }
 
 
-console.log(binarysearch(testArray, 34))
-console.log(recBinarysearch(testArray, 34))
-
 
 //while loop approach
-
 var whileBinarysearch = function(array, target) {
   let leftIndex = 0;
   let rightIndex = array.length - 1;
@@ -61,3 +59,9 @@ var whileBinarysearch = function(array, target) {
   }
   return - 1;
 }
+
+
+var testArray = [1, 23, 34, 56, 123, 54]
+console.log(binarysearch(testArray, 134))
+console.log(recBinarysearch(testArray, 134))
+console.log(whileBinarysearch(testArray, 134))

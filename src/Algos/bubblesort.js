@@ -1,3 +1,5 @@
+//O(n^2)
+
 var bubblesort = function(array) {
   for (var i = 0; i < array.length - 1; i++) {
     for (var j = 0; j < array.length - 1 - i; j++ ) {
@@ -14,3 +16,5 @@ var bubblesort = function(array) {
 
 let array = [2352,32523,23,12];
 console.log(bubblesort(array));
+
+
