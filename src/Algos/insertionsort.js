@@ -1,5 +1,6 @@
 
-//from toy problems
+//from toy problems -- review
+// O(n^2) average and worst case
 
 var insertionSort = function(array) {
   //iterates over the array, starting at the second position

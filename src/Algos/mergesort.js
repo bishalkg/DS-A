@@ -1,4 +1,4 @@
-// O(n log n)
+// O(n log n) worst case
 
 var mergeSort = (array) => {
   //base case, if we an array length 1 or 0, return
