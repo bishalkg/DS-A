@@ -20,6 +20,10 @@ Queue.prototype.size = function() {
   //return this._size;
 }
 
+Queue.prototype.isEmpty = function() {
+  return !this._storage.length
+}
+
 
 //ES6
 
@@ -47,7 +51,7 @@ class Queue2 {
   }
 }
 
-let q = new Queue2();
+let q = new Queue();
 q.enqueue(2)
 q.enqueue(3)
 q.enqueue(4)
@@ -65,3 +69,6 @@ q.enqueue(3)
 q.enqueue(4)
 q.enqueue(5)
 console.log(q)
+console.log(q.isEmpty());
+let q2 = new Queue();
+console.log(q2.isEmpty());
