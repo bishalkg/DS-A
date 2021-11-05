@@ -39,6 +39,41 @@ class Tree {
     }
   }
 
+  insertRecursive(value) {
+    if (value < this.value) {
+      if (!this.left) {
+        this.left = new Node(value);
+      } else {
+        this.left.insertRecursive(value);
+      }
+    } else if (value > this.value) {
+      if (!this.right) {
+        this.right = new Node(value);
+      } else {
+        this.right.insertRecursive(value);
+      }
+    }
+  }
+
+  containsRecursive(value) {
+    if (value === this.value) {
+      return true;
+    } else if (value < this.value) {
+      return !!(this.left && this.left.containsRecursive(value));
+    } else if (value > this.value) {
+      return !!(this.right && this.right.containsRecursive(value));
+    }
+  }
+
+  depthFirstLog(cb) {
+    cb(this.value);
+    if (this.left) {
+      this.left.depthFirstLog(cb);
+    }
+    if (this.right) {
+      this.left.depthFirstLog(cb);
+    }
+  }
 
   lookup(value) {
     if (!this.root) return false;
@@ -55,6 +90,7 @@ class Tree {
     return false;
   }
 
+  //advanced
   remove(value) {
     const currNode = this.root;
     if (!currNode) return false;
@@ -124,3 +160,4 @@ class Tree {
   }
 
 }
+
