@@ -59,6 +59,7 @@ class Tree {
     if (value === this.value) {
       return true;
     } else if (value < this.value) {
+      //purpose of double bang to ensure it returns a bool?
       return !!(this.left && this.left.containsRecursive(value));
     } else if (value > this.value) {
       return !!(this.right && this.right.containsRecursive(value));
