@@ -10,8 +10,6 @@ class Node {
 
 
 class LinkedList {
-
-
   constructor() {
     this.head = null;
     this.tail = null;
@@ -54,32 +52,41 @@ class LinkedList {
   }
 
   insert(index, value) {
-    //he uses a more general method!
-    //use length to keep track of the index
-    //store reference to the nodes next
-    //reassign the nodes next to the new node
-    //assign the new nodes next to the reference
-    const newNode = new Node(value);
-    let currNode = this.head;
-    while(this._length! === index) {
-      currNode = this.next;
+    //if the index is longer than length, can't insert
+    if (index > this._length - 1) return null;
+    //if the index is 0 or the tail, prepend or append
+    if (index === 0) {
+      return this.prepend(value);
+    } else if (index === this._length - 1) {
+      return this.append(value);
     }
 
-    if(currNode._length === index) {
-      let following = currNode.next;
-      currNode.next = newNode;
-      newNode.next = following
+    //store ref to previous node so its next can be assinged to the newNode when the insert index is found
+    const newNode = new Node(value);
+    let currNode = this.head;
+    let prevNode = null;
+    let currIndex = 0;
+    while(currIndex !== index) {
+      prevNode = currNode;
+      currNode = currNode.next;
+      currIndex++;
+    }
+
+    if(currIndex === index) {
+      prevNode.next = newNode;
+      newNode.next = currNode;
+      this._length++;
     }
 
     return this;
-
   }
 
   //O(n) time and O(1) space
   reverse(head) {
     let previous = null;
-    let current = head;
-    let following = head;
+    //either the head is passed in or we reference it from the instance 'this'
+    let current = this.head || head;
+    let following = this.head || head;
     while (current) {
       //store reference to the old current.next
       //initially following is pointing to head
@@ -91,6 +98,11 @@ class LinkedList {
       //assign the following node that we stored earlier to be the new current node
       current = following;
     }
+    let currHead = this.head;
+    let currTail = this.tail;
+    this.tail = currHead;
+    this.head = currTail;
+    return this;
   }
 
 
@@ -122,3 +134,21 @@ class LinkedList {
 
 }
 
+
+
+
+
+var newList = new LinkedList();
+newList.append('a');
+newList.append('b');
+newList.append('c');
+newList.append('d');
+newList.append('e');
+newList.append('f');
+newList.prepend('before a');
+newList.insert(0, 'before before a')
+newList.insert(1, 'after, before before a')
+newList.insert(5, 'inserted_at_5')
+newList.reverse();
+newList.reverse();
+console.dir(newList);
