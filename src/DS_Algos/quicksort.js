@@ -27,6 +27,7 @@ console.log(quicksort([20, 30, 11, 1, 3, 0]))
 function quickSort(array) {
   if (array.length < 2) return array;
   let pivot = array[0];
+  //uses .slice(1) bc we want to disclude the pivot which is the first element
   let less = array.slice(1).filter((el) => el <= pivot)
   let greater = array.slice(1).filter((el) => el > pivot)
   return quickSort(less).concat([pivot], quickSort(greater));
