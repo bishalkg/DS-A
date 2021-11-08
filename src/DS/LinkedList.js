@@ -52,12 +52,10 @@ class LinkedList {
   }
 
   insert(index, value) {
-    //if the index is longer than length, can't insert
-    if (index > this._length - 1) return null;
-    //if the index is 0 or the tail, prepend or append
+    //if the index is 0 or the >= tail, prepend or append
     if (index === 0) {
       return this.prepend(value);
-    } else if (index === this._length - 1) {
+    } else if (index >= this._length - 1) {
       return this.append(value);
     }
 
@@ -79,6 +77,36 @@ class LinkedList {
     }
 
     return this;
+  }
+
+
+  remove(index) {
+    if (index === 0) {
+      let newHead = this.head.next;
+      this.head.next = null;
+      this.head = newHead;
+      this._length--;
+      return this.head;
+    } else if (index > this._length - 1) return null;
+
+    const nodeToReassign = this.traverseToIndex(index - 1);
+    if (nodeToReassign.next === this.tail) {
+      this.tail = nodeToReassign;
+    }
+    nodeToReassign.next = nodeToReassign.next.next;
+    this.length--;
+
+    return this;
+  }
+
+  traverseToIndex(index) {
+    const currNode = this.head;
+    let currIndex = 0;
+    while(index !== currIndex) {
+      currNode = currNode.next;
+      currIndex++;
+    }
+    return currNode;
   }
 
   //O(n) time and O(1) space
