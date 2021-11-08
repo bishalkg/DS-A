@@ -91,7 +91,7 @@ class Tree {
     return false;
   }
 
-  //advanced
+  //advanced, incomplete
   remove(value) {
     const currNode = this.root;
     if (!currNode) return false;
