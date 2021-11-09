@@ -1,4 +1,4 @@
-//pseudoclassical
+//pseudoclassical with array
 
 const Queue = function() {
   this._storage = [];
@@ -12,7 +12,7 @@ Queue.prototype.enqueue = function(value) {
 
 Queue.prototype.dequeue = function(value) {
   this._size && this._size--;
-  return this._storage.shift()
+  return this._storage.shift();
 }
 
 Queue.prototype.size = function() {
@@ -25,7 +25,7 @@ Queue.prototype.isEmpty = function() {
 }
 
 
-//ES6
+//ES6 with object
 
 class Queue2 {
   constructor() {

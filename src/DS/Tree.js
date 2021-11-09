@@ -55,6 +55,7 @@ class Tree {
     }
   }
 
+
   containsRecursive(value) {
     if (value === this.value) {
       return true;
@@ -75,6 +76,7 @@ class Tree {
       this.left.depthFirstLog(cb);
     }
   }
+
 
   lookup(value) {
     if (!this.root) return false;
@@ -141,7 +143,6 @@ class Tree {
 
       //go right, then left left left.. and point that values left to the old values left, and that values right to the old values right
   }
-
 
 
   breadthFirstSearch() {

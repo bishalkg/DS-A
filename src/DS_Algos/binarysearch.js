@@ -26,6 +26,7 @@ var recBinarysearch = function(array, target, leftIndex = 0, rightIndex = array.
   if (array[midpoint] === target) {
     return midpoint;
   }
+  //means searched the whole array
   if (leftIndex > rightIndex) {
     return -1;
   }
@@ -65,3 +66,5 @@ var testArray = [1, 23, 34, 56, 123, 54]
 console.log(binarysearch(testArray, 134))
 console.log(recBinarysearch(testArray, 134))
 console.log(whileBinarysearch(testArray, 134))
+
+

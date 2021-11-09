@@ -16,12 +16,15 @@ class HashTable {
   }
 
   insert(k, v) {
+    //1. calc an index
     let index = getIndexBelowMaxForKey(k, this._limit);
 
+    //2. retrieve bucket at that index
     //if a bucket at that index exists, retrieve it, or create a new empty bucket
     let bucket = this._storage.get(index) || [];
 
-    //collision: if bucket exists and hashedIndex exists, replace a value
+    //3. iterate over bucket and perform an action if a key is found
+    //if bucket exists and hashedIndex exists, replace a value
     for (var i = 0; i < bucket.length; i++) {
       let tuple = bucket[i];
       if (tuple[0] === k) {
@@ -30,9 +33,11 @@ class HashTable {
         return oldVal;
       }
     }
-    //if tuple with the key k doesn't exist, push a new tuple into the bucket
+
+    //4. perform a non-found action, in 3. if a key is found it replaces and exits out, if it doesn't we push a new tuple into bucket
+    //if tuple with the key k doesn't exist, push a new tuple into the bucket // handles case of collision into same bucket
     bucket.push([k, v]);
-    //set the storage index to be the hash, and its value to be the bucket array
+    //set the storage index to be the index from hashing, and its value to be the bucket array
     this._storage.set(index, bucket);
     this._size++;
 

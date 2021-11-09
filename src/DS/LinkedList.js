@@ -65,6 +65,7 @@ class LinkedList {
     let prevNode = null;
     let currIndex = 0;
     while(currIndex !== index) {
+      //advance prevNode and currNode till we reach index
       prevNode = currNode;
       currNode = currNode.next;
       currIndex++;
@@ -83,6 +84,7 @@ class LinkedList {
   remove(index) {
     if (index === 0) {
       let newHead = this.head.next;
+      //dont need to do this.head.next bc ref will be lost anyway and garbage cleanup will remove it
       this.head.next = null;
       this.head = newHead;
       this._length--;
@@ -91,8 +93,10 @@ class LinkedList {
 
     const nodeToReassign = this.traverseToIndex(index - 1);
     if (nodeToReassign.next === this.tail) {
+      //if the next val is the tail, then make this node the tail
       this.tail = nodeToReassign;
     }
+    //if next was tail, it is now null, or skips over the next node (the node to delete)
     nodeToReassign.next = nodeToReassign.next.next;
     this.length--;
 
@@ -109,16 +113,16 @@ class LinkedList {
     return currNode;
   }
 
-  //O(n) time and O(1) space
+  //O(n) time and O(1) space, pass in head or use as method of ll
   reverse(head) {
     let previous = null;
     //either the head is passed in or we reference it from the instance 'this'
     let current = this.head || head;
     let following = this.head || head;
-    while (current) {
+    while (current !== null) {
       //store reference to the old current.next
       //initially following is pointing to head
-      following = following.next;
+      following = following.next; //store this ref for later
       //set current.next to previous, the initial assignment the LL points to null (the new tail)
       current.next = previous;
       //advance previous and then advance current (using the reference we stored earlier)
@@ -126,15 +130,17 @@ class LinkedList {
       //assign the following node that we stored earlier to be the new current node
       current = following;
     }
-    let currHead = this.head;
-    let currTail = this.tail;
-    this.tail = currHead;
-    this.head = currTail;
+    // let currHead = this.head;
+    // let currTail = this.tail;
+    // this.tail = currHead;
+    // this.head = currTail;
+    [this.head, this.tail] = [this.tail, this.head]
     return this;
   }
 
 
   // *** since the issue is having potential different list lenghts, we could force them to have the same length! By starting a pointer at each head, and then moving the pointer to the head of the other list when null is reached
+  // O(n + m)
   linkedListIntersection(list1, list2) {
     if (list1 === null || list2 === null) return null;
     //traverse the linked list until
@@ -144,6 +150,7 @@ class LinkedList {
     let pointer2 = list2;
     //if pointer1 and pointer2 are the same value, could be a value or they could both null where they would also be equal, so would return null or the value
     while (pointer1 !== pointer2) {
+      //if pointer1 reaches null of the first list, start at the head of the secondlist
       if (!pointer1) {
         pointer1 = list2;
       } else {
@@ -157,8 +164,6 @@ class LinkedList {
     }
     return pointer1;
   }
-
-
 
 }
 
@@ -180,3 +185,15 @@ newList.insert(5, 'inserted_at_5')
 newList.reverse();
 newList.reverse();
 console.dir(newList);
+
+
+traverseToIndex(index) {
+  let currNode = this.head;
+  let currIndex = 0;
+  while (index !== currIndex) {
+    currNode = currNode.next;
+  }
+  return currNode;
+}
+
+
