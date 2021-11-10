@@ -1,5 +1,20 @@
 // O(n log n) worst case
 
+//mergeSort
+//if length 0 or 1 return array
+//find the midpoint
+//split the array in 2
+//recurse mergeSort on both halves
+//merge fxn on both halves
+//return merged
+
+//merge fxn
+//initialize an empty array
+//iterate over both arrays, starting pointer index at 0
+  //push to array given less than, advance pointer if pushed to array
+//return the array and spread the rest of the two arrays using slice of the current pointer index
+
+
 var mergeSort = (array) => {
   //base case, if we an array length 1 or 0, return
   if (array.length <= 1) return array;
@@ -15,7 +30,6 @@ var mergeSort = (array) => {
   return merged;
 
 }
-
 
 var merge = (leftArray, rightArray) => {
 
@@ -74,4 +88,39 @@ var merge = (leftArray, rightArray) => {
 //   }
 
 //   return [...merged, ...leftarray.slice(leftpointer), ...rightarray.slice(rightpointer)]
+// }
+
+
+
+// var mergeSort = function(array) {
+//   if (array.length <= 1) return array;
+
+//   let midpoint = Math.floor((array.length) /2);
+//   let left = array.slice(0, midpoint);
+//   let right = array.slice(midpoint);
+
+//   let sortLeft = mergeSort(left);
+//   let sortRight = mergeSort(right);
+//   let merged = merge(sortLeft, sortRight);
+//   return merged;
+
+// }
+
+// var merge = function(left, right) {
+//   var sorted = [];
+//   var leftpointer = 0;
+//   var rightpointer = 0;
+//   while (leftpointer < left.length && rightpointer < left.length) {
+//     var leftVal = left[leftpointer];
+//     var rightVal = right[rightpointer];
+
+//     if (leftVal < rightVal) {
+//       sorted.push(leftVal);
+//       leftpointer++;
+//     } else if (leftVal > rightVal) {
+//       sorted.push(rightVal)
+//       rightpointer++;
+//     }
+//   }
+//   return [...sorted, ...left.slice(leftpointer), ...right.slice(rightpointer)]
 // }
