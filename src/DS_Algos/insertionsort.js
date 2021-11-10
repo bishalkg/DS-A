@@ -1,7 +1,7 @@
 /* review */
 //from toy problems -- review
 // O(n^2) average and worst case
-// best case for almost sorted array O(n)
+// best case for almost sorted array or small array O(n)
 
 var insertionSort = function(array) {
   for (let i = 1; i < array.length; i++) {

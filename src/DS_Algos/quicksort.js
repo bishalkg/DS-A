@@ -10,7 +10,8 @@ const quicksort = (array) => {
     if (array[i] > pivot) rightarray.push(array[i]);
     if (array[i] < pivot) leftarray.push(array[i]);
   }
-  return [...quicksort(leftarray), pivot, ...quicksort(rightarray)]
+  return quicksort(leftarray).concat([pivot], quicksort(rightarray));
+  return [...quicksort(leftarray), pivot, ...quicksort(rightarray)];
   //pick a pivot, partition into 2 subarrays around the pivot
   //sort each subarray and combine
 
@@ -24,16 +25,17 @@ console.log(quicksort([20, 30, 11, 1, 3, 0]))
 
 
 //grokkings implementation
-function quickSort(array) {
+function quickSort2(array) {
   if (array.length < 2) return array;
   let pivot = array[0];
   //uses .slice(1) bc we want to disclude the pivot which is the first element
   let less = array.slice(1).filter((el) => el <= pivot)
   let greater = array.slice(1).filter((el) => el > pivot)
-  return quickSort(less).concat([pivot], quickSort(greater));
+  // return quickSort(less).concat([pivot], quickSort(greater));
+  return [...quickSort2(less), pivot, ...quickSort2(greater)]
 
 }
 
 
-console.log(quickSort([50, 40, 33, 12]))
-console.log(quickSort([20, 30, 11, 1, 3, 0]))
+console.log(quickSort2([50, 40, 33, 12]))
+console.log(quickSort2([20, 30, 11, 1, 3, 0]))
