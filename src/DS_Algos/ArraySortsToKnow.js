@@ -1,6 +1,7 @@
 //Time: best and average O(n log n), worst O(n^2).
 //Space: worst O(log n)
 //use this over mergeSort if the length of the array isn't too large, if space is an issue
+//non-stable sorting algo
 var quickSort = function(array) {
   if (array.length < 2) return array;
 
@@ -17,6 +18,7 @@ var quickSort = function(array) {
 //Time: best and average and worsr O(n log n).
 //Space: worst O(n)
 //use this over quicksort when space isn't an issue
+//is a stable sorting algo
 var mergeSort = function(array) {
   if (array.length < 2) return array;
 
@@ -24,16 +26,12 @@ var mergeSort = function(array) {
   var left = array.slice(0, midpoint);
   var right = array.slice(midpoint);
 
-  var sortLeft = mergeSort(left);
-  var sortRight =  mergeSort(right);
-
-  var merged = merge(sortLeft, sortRight);
-
-  return merged;
-
   return merge(mergeSort(left), mergeSort(right))
 
-
+  // var sortLeft = mergeSort(left);
+  // var sortRight =  mergeSort(right);
+  // var merged = merge(sortLeft, sortRight);
+  // return merged;
 }
 
 var merge = function(left, right) {
@@ -61,6 +59,7 @@ var merge = function(left, right) {
 //Time: best case O(n), and average and worst O(n^2).
 //Space: worst O(1)
 //use when array is small or mostly sorted
+//a stable sorting algo
 var insertionSort = function(array) {
 
   for (var i = 1; i < array.length; i++) {
