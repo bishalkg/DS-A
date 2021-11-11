@@ -39,3 +39,7 @@ function quickSort2(array) {
 
 console.log(quickSort2([50, 40, 33, 12]))
 console.log(quickSort2([20, 30, 11, 1, 3, 0]))
+
+
+
+

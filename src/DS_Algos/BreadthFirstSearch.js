@@ -33,7 +33,7 @@ class Tree {
   }
 
   breadthFirstSearchR(queue, list) {
-    if (!queue.length) return list;
+    if (!queue.length) return list; //eq to the conditional in the while loop
     let currNode = queue.shift();
     list.push(currNode.value);
     if (currNode.left) {
