@@ -14,4 +14,39 @@ var fibonacciIterative = function(number) {
   }
   return seq[number];
 }
-console.log(fibonacci(8))
+// console.log(fibonacci(8))
+
+
+//recursive with memoization
+var fibmemo1 = function(number) {
+  var cache = {};
+  var fib = function(number) {
+    if (cache[number]) {
+      return cache[number];
+    } else {
+      if (number < 2) return number;
+      cache[number] = fib(number -1) + fib(number -2)
+      return cache[number];
+    }
+  }
+  return fib.call(null, number)
+}
+
+var fibmemo2 = function() {
+  var cache = {};
+  return function fib(number) {
+    if (cache[number]) {
+      return cache[number];
+    } else {
+      if (number < 2) return number;
+      cache[number] = fib(number -1) + fib(number -2)
+      return cache[number];
+    }
+  }
+}
+
+var fasterFib = fibmemo1(20);
+console.log(fasterFib);
+
+var fasterFib2 = fibmemo2();
+console.log(fasterFib2(20));
