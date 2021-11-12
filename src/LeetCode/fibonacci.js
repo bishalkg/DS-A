@@ -17,7 +17,7 @@ var fibonacciIterative = function(number) {
 // console.log(fibonacci(8))
 
 
-//recursive with memoization
+//recursive with memoization O(n), but increased space
 var fibmemo1 = function(number) {
   var cache = {};
   var fib = function(number) {
