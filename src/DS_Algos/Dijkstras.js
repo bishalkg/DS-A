@@ -55,6 +55,7 @@ const findLowestCostNode = function(itCosts, processed) {
 
 //This is the algorithm
 const dijkstras = function(graph, costs, parents) {
+  //given graph we can create the initial costs and parents table
   let processed = [];
   let node = findLowestCostNode(costs, processed);
 
@@ -82,6 +83,16 @@ const dijkstras = function(graph, costs, parents) {
 
 
 console.log(dijkstras(graph, costs, parents))
+
+
+//the algorithm
+/*
+while we have nodes to process
+grab the node thats closest to the start
+update costs for its neighbors if a lesser value is found
+if any neighbors costs were updated, update the neighbors parents to the currNode
+mark node as processed
+*/
 
 
 

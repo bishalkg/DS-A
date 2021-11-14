@@ -18,12 +18,34 @@ var rob = function(nums) {
 
 //current best option is the previous houses sum (the current runnning max) or the current house + the previous non-adj houses sum
 function rob(nums) {
-  if (!nums.length) return 0;
+
+
+  if (nums.length === 0) return 0;
   if (nums.length === 1) return nums[0];
   if (nums.length === 2) return Math.max(nums[0], nums[1]);
-  let memo = [nums[0], Math.max(nums[0], nums[1])];
+
+
+
+
+
+  let memo = [
+
+    nums[0],
+    Math.max(nums[0], nums[1])
+
+  ];
+
+
   for (let i = 2; i < nums.length; i++) {
+
+
     memo[i] = Math.max( nums[i] + memo[i-2], memo[i-1] );
+
+
   }
+
+
+
+
   return memo[memo.length -1];
 }

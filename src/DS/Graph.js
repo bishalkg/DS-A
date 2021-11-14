@@ -72,7 +72,7 @@ function bfs(start, target) {
   while (queue.length > 0) {
     const airport = queue.shift();
 
-    const destinations = adjacencyList.get(airport); //grab all edges, so that they can added to queue
+    const destinations = adjacencyList.get(airport); //grab all edges, so that they can added to queue, get all neighbors
 
     for (const destination of destinations) {
 
@@ -85,6 +85,7 @@ function bfs(start, target) {
       if (!visited.has(destination)) {
         visited.add(destination);
         queue.push(destination);  //item only gets enqueued if it has not been visited
+        //only want to look at this destinations neighbors if it has not yet been visited, so add to queue
       }
     }
   }

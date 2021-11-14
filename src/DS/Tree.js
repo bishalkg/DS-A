@@ -12,16 +12,15 @@ class Tree {
   }
 
   insert(value) {
-    const newNode = new Node(value);
     if (!this.root) {
-      this.root = newNode;
+      this.root = new Node(value);
     } else {
       currNode = this.root;
       while(true) {
         if (value > currNode.value) {
           //go right
           if (!currNode.right) {
-            currNode.right = newNode;
+            currNode.right = new Node(value);
             return this;
           }
           currNode = currNode.right;
@@ -30,7 +29,7 @@ class Tree {
         if (value < currNode.value) {
           //go left
           if (!currNode.left) {
-            currNode.left = newNode;
+            currNode.left = new Node(value);
             return this;
           }
           currNode = currNode.left
