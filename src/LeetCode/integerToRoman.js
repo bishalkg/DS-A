@@ -42,3 +42,23 @@ var romanToInt = function(s) {
   }
   return sum;
 };
+
+//if you start from the end and iterate backwards, for those edge cases, if the current value is larger than the one before it in the romanNumber,
+//then subtract the difference from the total sum, and skip the next index in the for loop
+
+var romanToInt = function(s) {
+  var rI = {
+    I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000,
+  }
+  var sum = 0;
+  for (var i = s.length-1; i >=0; i--) {
+    if (rI[s[i]] > rI[s[i-1]]) {
+      sum+= (rI[s[i]] - rI[s[i-1]]);
+      i--;
+    } else {
+      sum += rI[s[i]];
+    }
+  }
+
+  return sum;
+}
