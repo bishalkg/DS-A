@@ -11,3 +11,16 @@ var maxSubArray = function(nums) {
   }
   return global_max;
 };
+
+
+var maxSubArray = function(nums) {
+  if (nums.length === 0) return 0;
+  if (nums.length === 1) return nums[0];
+
+  var max = nums[0];
+  for (var i = 0; i < nums.length; i++) {
+    nums[i] = Math.max(nums[i], nums[i] + nums[i-1]);
+    max = Math.max(nums[i], max);
+  }
+  return max;
+}
