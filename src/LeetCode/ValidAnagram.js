@@ -71,6 +71,7 @@ var isAnagram = function(s, t) {
 }
 
 //now just two loops O(N) ----- this one was faster than 99%
+//use the same hash map/array, iterate through string1, if seen in string1 +1, if seen in string2 -1, this will balance out to 0 in the end if string1 was an anagram of string2, then we can iterate through the hashmap/array and if we find a non-0, then return false
 var isAnagram = function(s, t) {
   if (s.length !== t.length) return false;
 

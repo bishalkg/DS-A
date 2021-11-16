@@ -35,6 +35,7 @@ var moveZeroes = function(nums) {
     }
   }
 
+  //and here is why that var is called lastNonZeroIndex, bc we start swapiing for zeros starting here
   for (var i = lastNonZeroIndex; i < nums.length; i++) {
     nums[i] = 0;
   }

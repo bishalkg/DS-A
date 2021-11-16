@@ -1,5 +1,5 @@
 var isValidBST = function(root, min = -Infinity, max = Infinity) {
-  if (root === null) return true; // return true if reached end of path, or if there is no initial node
+  if (root === null) return true; // return true if reached end of path, or if there is no initial node// once this 'roots' parent is a leaf node
   if (root.value <= min || root.value >= max) { //the equals to here doesnt allow duplicates
     return false;
   }

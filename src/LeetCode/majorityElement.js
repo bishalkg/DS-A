@@ -31,7 +31,7 @@ var majorityElement = function(nums) {
   var count = 0;
   var candidate = null;
   for (var i = 0; i < nums.length; i++) {
-    if (count === 0) candidate = nums[i];
+    if (count === 0) candidate = nums[i]; // if count decremented to zero, update the candidate
     count+= (nums[i] === candidate) ? 1 : -1;
   }
   return candidate;

@@ -32,7 +32,7 @@ class Tree {
     return list;
   }
 
-  breadthFirstSearchR(queue, list) {
+  breadthFirstSearchR(queue, list) { // tree.breadthFirstSearchR([tree.root], []); //this.root doesnt work here
     if (!queue.length) return list; //eq to the conditional in the while loop
     let currNode = queue.shift();
     list.push(currNode.value);
@@ -47,6 +47,3 @@ class Tree {
 
 }
 
-
-// tree.breadthFirstSearchR([tree.root], []);
-//this.root doesnt work here

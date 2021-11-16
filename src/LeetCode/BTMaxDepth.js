@@ -10,7 +10,7 @@ var maxDepthBT = function(root) {
     var currDepth = depths.pop();
     if (currNode !== null) {
       maxDepth = Math.max(currDepth, maxDepth);
-      callstack.push(currNode.right)
+      callstack.push(currNode.right)//push right before left so it follows the same path as the recursive solution below
       depths.push(currDepth+1)
       callstack.push(currNode.left)
       depths.push(currDepth+1)
@@ -23,6 +23,6 @@ var maxDepthBT = function(root) {
 }
 
 var maxDepthBT = function(root) {
-  if (!root) return 0;
+  if (!root) return 0;//once we've reached the leafs, return 0 to start the chain of addition computations
   return 1 + Math.max(maxDepthBT(root.left),maxDepthBT(root.right));
 }

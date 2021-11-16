@@ -6,6 +6,7 @@ var climbStairs = function(n) {
       seq[i] = seq[i-1] + seq[i-2];
   }
   return seq[seq.length -1];
+}
 
 
 

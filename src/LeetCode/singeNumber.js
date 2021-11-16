@@ -17,6 +17,7 @@ var singleNumber = function(array) {
 // console.log(singleNumber([4,1,2,1,2]))
 
 //this version with a set is faster
+//any particular number will only have one duplicate, so once it is deleted, it can't be added again to the set from following indices
 var singleNumber = function(array) {
   var set = new Set();
   for (var i = 0; i < array.length; i++) {

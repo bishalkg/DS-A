@@ -19,7 +19,7 @@ var maxSubArray = function(nums) {
 
   var max = nums[0];
   for (var i = 0; i < nums.length; i++) {
-    nums[i] = Math.max(nums[i], nums[i] + nums[i-1]);
+    nums[i] = Math.max(nums[i], nums[i] + nums[i-1]); //this more consisely describes what's going on above
     max = Math.max(nums[i], max);
   }
   return max;
