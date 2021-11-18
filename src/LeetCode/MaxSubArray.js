@@ -18,9 +18,14 @@ var maxSubArray = function(nums) {
   if (nums.length === 1) return nums[0];
 
   var max = nums[0];
-  for (var i = 0; i < nums.length; i++) {
+  for (var i = 1; i < nums.length; i++) {
     nums[i] = Math.max(nums[i], nums[i] + nums[i-1]); //this more consisely describes what's going on above
     max = Math.max(nums[i], max);
   }
   return max;
 }
+
+
+
+//start at the second index (i=1) and ask it, is it better to start over with this index? Or to add this index to the previous max stored at (i-1)
+//alternatively, we can store the currsum as a variable instead of mutating the array

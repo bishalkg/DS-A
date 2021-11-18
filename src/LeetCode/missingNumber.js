@@ -19,6 +19,8 @@ var missingNumber = function(nums) {
   }
 }
 
+
+//solved in O(n) time and O(1) space using summation law
 var missingNumber = function(nums) {
   var sum = 0;
   for (var i = 0; i < nums.length; i++) {
@@ -28,8 +30,6 @@ var missingNumber = function(nums) {
   var sum2 = actualLength * ((actualLength-1)/2);
   return sum2 - sum;
 }
-
-//solved in O(n) time and O(1) space using
 
 console.log(missingNumber([9,6,4,2,3,5,7,0,1]))
 console.log(missingNumber([0,1]))

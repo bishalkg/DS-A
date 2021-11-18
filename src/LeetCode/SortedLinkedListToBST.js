@@ -46,7 +46,7 @@ The number of nodes in head is in the range [0, 2 * 104].
 
 
 
-
+//O(n) bc we see each value in array once?, also iterated linked list once to create array, O(n) space
 var sortedListToBST = function(head) {
   var list = [];
   var currNode = head;
@@ -57,7 +57,7 @@ var sortedListToBST = function(head) {
 
   var arrayToBST = function(list, start=0, end=list.length-1) {
       if (!list || !list.length) return null;
-      if (start > end) return null;
+      if (start > end) return null; //means we've reached our base case of a single node in the list [{node}], so end=mid-1 gives 0-1=-1
       var mid = Math.floor((start+end)/2);
       var node = new TreeNode(list[mid]);
       node.left = arrayToBST(list, start, mid-1);

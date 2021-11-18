@@ -96,8 +96,8 @@ var isAnagram = function(s, t) {
     }
 
     for (var i = 0; i < counts.length; i++) {
-        if (!counts[i]) counts[i] = 0;
-        if (counts[i] !== 0) return false;
+        if (!counts[i]) counts[i] = 0; //replaces the undefineds in the array with zeros
+        if (counts[i] !== 0) return false; //all values should be zero if the two strings are anagrams
     }
 
     return true;

@@ -17,7 +17,8 @@ class Tree {
   }
 
 
-  DFinOrder(node, list) {
+  DFinOrder(node, list=[]) {
+    if(!node) return [];
     if (node.left) {
       this.DFinOrder(node.left, list);
     }
@@ -28,7 +29,8 @@ class Tree {
     return list;
   }
 
-  DFPreOrder(node, list) {
+  DFPreOrder(node, list=[]) {
+    if (!node) return [];
     list.push(node.value);
     if (node.left) {
       DFPreOrder(node.left, list);
@@ -39,7 +41,8 @@ class Tree {
     return list;
   }
 
-  DFPostOrder(node, list) {
+  DFPostOrder(node, list=[]) {
+    if (!node) return [];
     if (node.left) {
       DFPostOrder(node, list);
     }
