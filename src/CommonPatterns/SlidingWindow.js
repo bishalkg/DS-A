@@ -146,6 +146,7 @@ var AllAvgSizeK = function(array, k) {
 }
 
 
+//Medium
 var longestSubstringSizeK = function(string, k) {
   var maxLength = -Infinity;
   var counter = {};
@@ -170,3 +171,35 @@ var longestSubstringSizeK = function(string, k) {
 
   }
 }
+
+
+//fruit baskets
+var totalFruit = function(fruits) {
+  var max = -Infinity;
+var b1 = [];
+var b2 = [];
+var start = 0;
+for (var end = 0; end < fruits.length; end++) {
+if (!b1.length) {
+  b1.push(fruits[end]);
+} else if (b1.length && b1[0] === fruits[end]) {
+  b1.push(fruits[end]);
+} else if (!b2.length) {
+  b2.push(fruits[end]);
+} else if (b2.length && b2[0] === fruits[end]) {
+  b2.push(fruits[end]);
+}
+
+max = Math.max(max, b1.length + b2.length);
+
+if (b1[0] !== fruits[end] && b2[0] !== fruits[end]) {
+  b1 = [];
+  b2 = [];
+  end = start;
+  start++;
+}
+
+}
+
+return max;
+};
