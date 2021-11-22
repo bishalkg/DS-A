@@ -35,6 +35,7 @@ var firstUniqChar = function(s) {
   //recognize a hash map is not guranteed to be ordered
   //the key here is to iterate over the original array the second time, so that we are checking IN ORDER
   for (var i = 0; i < s.length; i++) {
+    //if the val at that key is 1, means this was the only char to appear once
       if (map[s[i]] === 1) return i;
   }
   return -1;

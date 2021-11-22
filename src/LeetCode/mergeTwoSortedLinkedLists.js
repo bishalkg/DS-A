@@ -38,7 +38,11 @@ Both l1 and l2 are sorted in non-decreasing order.
 
 var mergeTwoList = function(l1, l2) {
   var dummy = {next:null};
+  //save this to return the new head
   var head = dummy;
+  //until one list reaches null, we will:
+    //assign dummy.next to the lesser valued nodes, advance the pointer for this node
+    //then advance the dummy pointer
   while (l1 !== null && l2 !== null) {
     if (l1.val < l2.val) {
       dummy.next = l1;
@@ -51,11 +55,13 @@ var mergeTwoList = function(l1, l2) {
     dummy = dummy.next;
   }
 
+  //assign the leftover non-null node as the next of the dummy pointer
   if (l1) {
     dummy.next = l1;
   } else {
     dummy.next = l2;
   }
 
+  //return the new head
   return head.next;
 }

@@ -31,6 +31,8 @@ var missingNumber = function(nums) {
   return sum2 - sum;
 }
 
+//sum = (#values) * ( (#values-1) /2 )
+
 console.log(missingNumber([9,6,4,2,3,5,7,0,1]))
 console.log(missingNumber([0,1]))
 console.log(missingNumber([1,2]))

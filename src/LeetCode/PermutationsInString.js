@@ -32,14 +32,16 @@ Constraints:
 s1 and s2 consist of lowercase English letters.
 */
 
+//s1 is the pattern
+//s2 is the string
 
 var checkInclusion = function(s1, s2) {
   var freqMap = {};
-for (var i of s1) {
-if (!freqMap[i]) {
+  for (var i of s1) {
+  if (!freqMap[i]) {
   freqMap[i] = 0
-}
-freqMap[i]++
+  }
+  freqMap[i]++
 }
 //create a freq map using the pattern
 
@@ -62,17 +64,14 @@ if (s2[end] in freqMap) {
 if (matches === Object.keys(freqMap).length) return true;
 
 
-//if the length of window is at least the size of the pattern, we need to resize
-  //we need to check the char at the start index of the window, and if it is in our freqMap, we need to add its count back, and if its count in the freqMap was 0, we need to also subtract 1 from our total matches, since the zero indicates we added 1 to matches
-  //then advance start index of the window
-if ((end-start+1) >= s1.length) {
-    if (s2[start] in freqMap) {
-        if (freqMap[s2[start]] === 0) {
+if ((end-start+1) >= s1.length) {//if the length of window is at least the size of the pattern, we need to resize
+    if (s2[start] in freqMap) {  //we need to check the char at the start index of the window,
+        if (freqMap[s2[start]] === 0) {//if its count in the freqMap was 0, we need to also subtract 1 from our total matches, since the zero indicates we added 1 to matches
             matches--;
         }
-        freqMap[s2[start]]++;
+        freqMap[s2[start]]++; //and if it is in our freqMap, we need to add its count back
     }
-    start++;
+    start++; //then advance start index of the window
 }
 
 

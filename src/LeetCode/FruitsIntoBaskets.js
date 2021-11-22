@@ -89,17 +89,21 @@ var totalFruit = function(fruits) {
   var start = 0;
   var counter = {};
   for (var end = 0; end < fruits.length; end++) {
+    //add currVal to frequency map
     if (!counter[fruits[end]]) {
       counter[fruits[end]] = 0;
     }
     counter[fruits[end]]++;
 
+
+    //while more than two fruits are in our freqMap
     while (Object.keys(counter).length > 2) {
-      counter[fruits[start]]--; //remove the first one in the window so we can slide foward
-      if (counter[fruits[start]] === 0) delete counter[fruits[start]];
-      start++;
+      counter[fruits[start]]--; //decrement the count of the first one in the window, from our freqMap, so we can slide foward
+      if (counter[fruits[start]] === 0) delete counter[fruits[start]]; //if we decremented to 0, remove it so it doesn't count towards Object.keys(counter).length
+      start++;  //slide the window from left
     }
 
+    //this takes max of window length, which is equivalent to the number of consecutive fruits we put in the baskets
     max = Math.max(max, end - start + 1);
 
   }

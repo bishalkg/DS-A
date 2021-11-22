@@ -47,8 +47,9 @@ var longestOnes = function(nums, k) {
   for (var end = 0; end < nums.length; end++) {
       if (nums[end] === 0) seenZeros++;
 
+      //slide window if we've seen more than k zeros, since question asks for flipping at MOST k zeros to ones
       if (seenZeros > k) {
-          if (nums[start] === 0) seenZeros--;
+          if (nums[start] === 0) seenZeros--; //also need to make sure to decrement count of zero if start of window has 0
           start++;
       }
 

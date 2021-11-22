@@ -80,12 +80,14 @@ var isAnagram = function(s, t) {
         var currS = s[i].charCodeAt(0) - 96;
         var currT = t[i].charCodeAt(0) - 96;
 
+        //add to count if from array s
         if (!counts[currS]) {
             counts[currS] = 1;
         } else {
             counts[currS]++
         }
 
+        //subtract from count if from array t
         if (!counts[currT]) {
            counts[currT] = -1;
         } else {
@@ -95,6 +97,8 @@ var isAnagram = function(s, t) {
 
     }
 
+    //iterate array, if non zero found, then not an anagram
+    //replace undefined with 0, since this could match counts[i] !== 0// could also do counts[i] !==0 && !== undefined(?)
     for (var i = 0; i < counts.length; i++) {
         if (!counts[i]) counts[i] = 0; //replaces the undefineds in the array with zeros
         if (counts[i] !== 0) return false; //all values should be zero if the two strings are anagrams

@@ -1,3 +1,13 @@
+/*
+Given a string with lowercase letters only, if you are allowed to replace no more than k letters with any letter, find the length of the longest substring having the same letters after replacement.
+
+Example 1:
+
+Input: String="aabccbb", k=2
+Output: 5
+Explanation: Replace the two 'c' with 'b' to have the longest repeating substring "bbbbb".
+*/
+
 var characterReplacement = function(s, k) {
   var maxlen = 0;
   var counter = {};
@@ -21,14 +31,14 @@ var characterReplacement = function(s, k) {
   }
   return maxlen;
 };
-//dont need to update maxRepeatChar because the maxlen will only get larger ONLY IF we find a maxRepeatChar greater than the greatest one we have already found
+//dont need to update maxRepeatChar because the maxlen will get larger ONLY IF we find a maxRepeatChar greater than the greatest one we have already found
 
 
 //this one's faster, instead of spreading and finding the maxRepeatCharCount, instead compare current maxRepeatCharCount to the count at the current char
 var characterReplacement = function(s, k) {
-  var maxlen = 0;
   var counter = {};
   var maxRepeatCharCount = 0;
+  var maxlen = 0;
   var start = 0;
   for (var end = 0; end < s.length; end++) {
       if (!counter[s[end]]) {
@@ -37,14 +47,14 @@ var characterReplacement = function(s, k) {
           counter[s[end]]++;
       }
 
-      //update the max repeat counter
+      //update the max repeat counter using the count at the current value
       maxRepeatCharCount = Math.max(maxRepeatCharCount, counter[s[end]]);
+
+      //windowLength - maxRepeatCharCount = number of diff chars, which cannot be greater than k characters
       if ((end - start +1 - maxRepeatCharCount) > k) {
           counter[s[start]]--;
           start++;
       }
-
-
 
       maxlen = Math.max(maxlen, end - start +1);
   }
@@ -55,7 +65,7 @@ var characterReplacement = function(s, k) {
 
 
 
-
+//from solution
 function characterReplacement(s, k) {
   let windowStart = 0,
     maxLength = 0,

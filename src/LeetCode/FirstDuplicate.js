@@ -25,8 +25,10 @@ const firstDup2 = function(array) {
     let mapIndex = Math.abs(array[i]) - 1;  //sub 1 because last possible index will be one less than the length of the array
 
     if (array[mapIndex] < 0) {
+      //if the val at the mappedIndex is negative, means we made this negative before, meaning the val at current index is the duplicate
       return Math.abs(array[i]);
     }
+    //turn the val at the mapped index to a negative number, indicates whether or not it has been seen before
     array[mapIndex] = -1 * array[mapIndex];
   }
 

@@ -51,7 +51,9 @@ var romanToInt = function(s) {
     I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000,
   }
   var sum = 0;
+  //iterate backwards
   for (var i = s.length-1; i >=0; i--) {
+    //use IV as an example, since V is greater than I, add the difference to the sum, and skip the next i with i--
     if (rI[s[i]] > rI[s[i-1]]) {
       sum+= (rI[s[i]] - rI[s[i-1]]);
       i--;

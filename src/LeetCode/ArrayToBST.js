@@ -40,7 +40,7 @@ nums is sorted in a strictly increasing order.
 
 
 var sortedArrayToBST = function(nums, start=0, end=nums.length-1) {
-  if (start > end) return null; //when the tips of the recursive calls are reached there will be a single value, so the index of start and end will be zero, mid will be zero, leading to a end smaller than the start (nums, start, mid-1)
+  if (start > end) return null; //when the tips of the recursive calls are reached there will be a single value eg. [3], so the index of start and end will be zero, mid will be zero, leading to an end smaller than the start (nums, start, mid-1)
   if (!nums || !nums.length) return null;
 
   var mid = Math.floor((start+end)/2); //for a sorted array, we can keep it balanced by picking the midpoint of the array as the parent every time

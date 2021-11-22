@@ -248,12 +248,13 @@ var revLL2 = function(head, left, right) {
 
   var leftPrev = dummy;
   var curr = head;
+  //advance leftPrev and curr pointers up until 'left', or, 'left' number of times
   for (var i = 0; i < left -1; i++) {
     leftPrev = curr;
     curr = curr.next;
   }
 
-  //reverse LL as usual, upper bound (right - left + 1), do reversal this many times
+  //reverse LL as usual, upper bound (right - left + 1), do reversal this many times, the number of nodes to reverse times
   var prev = null;
   var following = curr;
   for (var i = 0; i < right - left+1; i++) {

@@ -52,11 +52,13 @@ var lengthOfLongestSubstring = function(s) {
     //if you see a character again ( s[end] ), shrink the window by setting start, but set start to the max of the current start or the index+1 at which the char was first observed. This makes sure that if you see a duplicate in s, start will be set such that it starts at the index after where it first appeared
     //set start to the larger of two indices, either index+1 of where it last appeared, or where the start pointer is currently at, you don't want to go back to a lower index like I did the solutions below, bc then you're searching indices you've already serched
     //instead, the end - start +1 keeps track of the strech of characters in the hash map
-    if (counter[s[end]]) {
-      start = Math.max(start, counter[s[end]])
+    if (counter[s[end]]) { //if the char has been seen before, set start to the index it was seen+1, leave start as is, whichever is larger index
+      start = Math.max(start, counter[s[end]]);
     }
-    maxlength = Math.max(maxlength, end - start + 1);
-    counter[s[end]] = end+1;
+
+    maxlength = Math.max(maxlength, end - start + 1); //update size of window
+
+    counter[s[end]] = end+1;  //a duplicate will have its index+1 updated
   }
   return maxlength;
 };

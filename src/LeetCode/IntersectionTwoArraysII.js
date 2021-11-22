@@ -43,7 +43,7 @@ What if elements of nums2 are stored on disk, and the memory is limited such tha
 
 //O(n) time and O(n) space
 var intersect = function(nums1, nums2) {
-  var counter = {};
+
   var shorter = nums1;
   var longer = nums2;
   if (shorter.length !== longer.length && shorter.length > longer.length) {
@@ -51,6 +51,7 @@ var intersect = function(nums1, nums2) {
   }
   //the step above ensures we make a hashmap of the smaller array
 
+  var counter = {};
   for (var i = 0; i < shorter.length; i++) {
       if (counter[shorter[i]]) {
           counter[shorter[i]]++;
@@ -61,9 +62,9 @@ var intersect = function(nums1, nums2) {
   var result = [];
 
   for (var i = 0; i < longer.length; i++) {
-    if (counter[longer[i]]) { //if the value exists in our hash map, push it to result array, decrement the count of that number to signifiy that its been counted in our result
-        result.push(longer[i]);
-        counter[longer[i]]--;
+    if (counter[longer[i]]) {
+        result.push(longer[i]);//if the value exists in our hash map, push it to result array,
+        counter[longer[i]]--;//decrement the count of that number to signifiy that its been counted in our result
     }
   }
   return result;
@@ -79,11 +80,12 @@ var intersect = function(nums1, nums2) {
   var j = 0;
   var list = [];
   while (i < nums1.length && j < nums2.length) {
+    //keep adding to list and incrementing both pointers as long as theres matches
     if (nums1[i] === nums2[j]) {
       list.push(nums1[i]);
       i++;
       j++;
-    } else if (nums1[i] < nums2[j]) {
+    } else if (nums1[i] < nums2[j]) { //if val is smaller, then advance the smaller pointer to catch up to the larger val in the other array
       i++;
     } else {
       j++;

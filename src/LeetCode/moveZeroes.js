@@ -59,4 +59,4 @@ var moveZeroes = function(nums) {
 }
 
 
-//if the value is not zero, swap it with the lastSeenZeroIndex
+//if the value is not zero, swap it with the lastSeenZeroIndex, then advance lastSeenZeroIndex
