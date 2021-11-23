@@ -69,6 +69,7 @@ var minWindow = function(s, t) {
       if (s[end] in freqMap) {
           freqMap[s[end]]--;
           if (freqMap[s[end]] === 0) {
+            //can also use >= 0, if the while loop condition is (matches === pattern.length)
               matches++;
           }
       }
@@ -96,4 +97,55 @@ var minWindow = function(s, t) {
 
 
   return shortestSub;
+};
+
+
+
+//here it is with only one slice method done O(N+M)
+var minWindow = function(s, t) {
+
+  var freqMap = {};
+  for (var i = 0; i < t.length; i++) {
+      if (!(t[i] in freqMap)) {
+          freqMap[t[i]] = 0;
+      }
+      freqMap[t[i]]++;
+  }
+
+  var windowStart = 0;
+  var substrStart = 0;
+  var minLength = s.length+1;
+  var matches = 0;
+
+  for (var end = 0; end < s.length; end++) {
+      if (s[end] in freqMap) {
+          freqMap[s[end]]--;
+          if (freqMap[s[end]] >= 0) {
+              matches++;
+          }
+      }
+
+      while (matches === t.length) {
+          if ((end-windowStart+1) < minLength) {
+              minLength = (end-windowStart+1);
+              substrStart = windowStart;
+          }
+
+          if (s[windowStart] in freqMap) {
+              if (freqMap[s[windowStart]] === 0) {
+                  matches--;
+              }
+              freqMap[s[windowStart]]++;
+          }
+
+          windowStart++;
+      }
+  }
+
+  if (minLength > s.length) {
+      return '';
+  }
+
+  return s.slice(substrStart, substrStart+minLength)
+
 };
