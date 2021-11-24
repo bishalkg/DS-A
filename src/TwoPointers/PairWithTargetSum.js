@@ -13,7 +13,7 @@ function pair_with_target_sum(arr, targetSum) {
     const currSum = arr[left] + arr[right];
     if (currSum === targetSum) return [left, right];
 
-    if (targetSum > currSum) {
+    if (targetSum > currSum) { //if targetSum is greater, we can only move the left pointer, bc the right pointer is already at the end
       left++;
     } else {
       right--;
@@ -21,4 +21,19 @@ function pair_with_target_sum(arr, targetSum) {
   }
 
   return [-1,-1];
+}
+
+
+
+
+function pair_with_target_sum(arr, targetSum) {
+  const nums = {}; // to store numbers and their indices
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    if (targetSum - num in nums) { //if the target - currentNum is a key in our object, then we found a pair
+      return [nums[targetSum - num], i];
+    }
+    nums[arr[i]] = i; //store the { value: index } in nums object
+  }
+  return [-1, -1];
 }
