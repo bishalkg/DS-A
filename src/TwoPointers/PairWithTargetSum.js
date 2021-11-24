@@ -4,7 +4,7 @@ Given an array of sorted numbers and a target sum, find a pair in the array whos
 Write a function to return the indices of the two numbers (i.e. the pair) such that they add up to the given target.
 */
 
-
+//O(N) time, and O(1) space
 function pair_with_target_sum(arr, targetSum) {
   let left = 0,
     right = arr.length -1;
@@ -25,7 +25,7 @@ function pair_with_target_sum(arr, targetSum) {
 
 
 
-
+//O(N) time, and O(N) space
 function pair_with_target_sum(arr, targetSum) {
   const nums = {}; // to store numbers and their indices
   for (let i = 0; i < arr.length; i++) {
