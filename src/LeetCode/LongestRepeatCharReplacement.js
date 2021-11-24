@@ -37,7 +37,7 @@ var characterReplacement = function(s, k) {
 //this one's faster, instead of spreading and finding the maxRepeatCharCount, instead compare current maxRepeatCharCount to the count at the current char
 var characterReplacement = function(s, k) {
   var counter = {};
-  var maxRepeatCharCount = 0;
+  var maxRepeatCharCount = 0; //this will be used to calculate # of distinct chars, which canot be greater than k
   var maxlen = 0;
   var start = 0;
   for (var end = 0; end < s.length; end++) {

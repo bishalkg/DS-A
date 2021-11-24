@@ -101,9 +101,10 @@ var minWindow = function(s, t) {
 
 
 
-//here it is with only one slice method done O(N+M)
+//here it is with only one slice done O(N+M). Remember .slice is O(n) operation
 var minWindow = function(s, t) {
 
+  //make freqMap of pattern t
   var freqMap = {};
   for (var i = 0; i < t.length; i++) {
       if (!(t[i] in freqMap)) {
@@ -114,7 +115,7 @@ var minWindow = function(s, t) {
 
   var windowStart = 0;
   var substrStart = 0;
-  var minLength = s.length+1;
+  var minLength = s.length+1; //set this +1 higher than the string length, so later we can check it anything actually changed, if not return ''
   var matches = 0;
 
   for (var end = 0; end < s.length; end++) {
@@ -127,22 +128,22 @@ var minWindow = function(s, t) {
 
       while (matches === t.length) {
           if ((end-windowStart+1) < minLength) {
-              minLength = (end-windowStart+1);
+              minLength = (end-windowStart+1); //all you need is the length of the substr and where it starts to return the subtr later
               substrStart = windowStart;
           }
 
-          if (s[windowStart] in freqMap) {
-              if (freqMap[s[windowStart]] === 0) {
+          if (s[windowStart] in freqMap) {  //if the char at the start index is in the freqMap, we need to do some cleanup,
+              if (freqMap[s[windowStart]] === 0) { //if its freq is currently 0, decrement matches bc this was counted as a match before
                   matches--;
               }
-              freqMap[s[windowStart]]++;
+              freqMap[s[windowStart]]++; // add it back to freqMap
           }
 
           windowStart++;
       }
   }
 
-  if (minLength > s.length) {
+  if (minLength > s.length) { //if minLength is > s.length, it means it didnt change bc we set it +1 before the for loop, so just return ''
       return '';
   }
 
