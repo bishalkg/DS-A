@@ -1,14 +1,14 @@
 
 //mine
 const remove_duplicates = function(arr) {
-  var lastNonDup = 0;
+  var nextNonDup = 0;
   for (var i = 0; i < arr.length; i++) {
-    if (arr[i] !== arr[lastNonDup]) {
-      lastNonDup++;
-      [arr[i], arr[lastNonDup]] = [arr[lastNonDup], arr[i]];
+    if (arr[i] !== arr[nextNonDup]) {
+      nextNonDup++;
+      [arr[i], arr[nextNonDup]] = [arr[nextNonDup], arr[i]];
     }
   }
-  return lastNonDup+1;
+  return nextNonDup+1;
 };
 
 //grokkings

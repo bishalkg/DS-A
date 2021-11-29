@@ -20,11 +20,11 @@ const triplet_with_smaller_sum = function(arr, target) {
     while (left < right) {
       var currSum = curr + arr[left] + arr[right];
       if (currSum < target) {
-        count+= right-left;
+        count+= right-left; //algorithm wont see each valid triplet, but does count all triplets
         //all possible triplets to the left of 'right' will be counted
         left++;
       } else {
-        right--;
+        right--; //bc we want sum to get smaller, if we moved left up again, the sum would only get bigger
       }
     }
   }
@@ -40,16 +40,14 @@ console.log(triplet_with_smaller_sum([-1, 4, 2, 1, 3], 5)); //4
 Time complexity#
 Sorting the array will take O(N * logN)O(N∗logN). The searchPair() will take O(N)O(N). So, overall searchTriplets() will take O(N * logN + N^2)O(N∗logN+N
 ​2
-​​ ), which is asymptotically equivalent to O(N^2)O(N
-​2
-​​ ).
+​​ ), which is asymptotically equivalent to O(N^3).
 
 Space complexity#
 The space complexity of the above algorithm will be O(N)O(N) which is required for sorting if we are not using an in-place sorting algorithm.
 
 */
 
-
+//this solution does look at all possible triplets and stores them in a result array
 function triplet_with_smaller_sum(arr, target) {
   arr.sort((a, b) => a - b);
   const triplets = [];

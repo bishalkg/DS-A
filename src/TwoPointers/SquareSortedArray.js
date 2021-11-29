@@ -10,7 +10,7 @@
 
 const make_squares = function(arr) {
   let squares = new Array(arr.length).fill(0); //.fill unecessary, costs O(n) time
-  let nextIndexToAddTo = arr.length-1;
+  let nextIndexToAddTo = squares.length-1;
   let left = 0;
   let right = arr.length -1;
   while (left <= right) {
