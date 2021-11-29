@@ -89,7 +89,7 @@ var allSubarrayProductLessThanK = function(nums, k) {
     }
 
     var subs = new Set();
-    for (var j = end; j > start -1 ; j--) {
+    for (var j = end; j > start -1 ; j--) { //start -1,  to include the single val at the start as well bc that counts as a subarray
       subs.add(nums[j]);
       result.push(Array.from(subs));
     }
