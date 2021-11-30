@@ -49,7 +49,7 @@ var intersect = function(nums1, nums2) {
   if (shorter.length !== longer.length && shorter.length > longer.length) {
     [shorter, longer] = [longer, shorter];
   }
-  //the step above ensures we make a hashmap of the smaller array
+  //the step above ensures we make a freqmap of the smaller array
 
   var counter = {};
   for (var i = 0; i < shorter.length; i++) {

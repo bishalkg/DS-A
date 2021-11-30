@@ -13,12 +13,12 @@
       if (!pointer1) {
         pointer1 = list2;
       } else {
-        pointer1.next;
+        pointer1 = pointer1.next;
       }
       if (!pointer2) {
         pointer2 = list1;
       } else {
-        pointer2.next;
+        pointer2 = pointer2.next;
       }
     }
     return pointer1;

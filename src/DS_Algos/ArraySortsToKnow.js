@@ -59,7 +59,8 @@ var merge = function(left, right) {
 //Time: best case O(n), and average and worst O(n^2).
 //Space: worst O(1)
 //use when array is small or mostly sorted
-//a stable sorting algo
+//a stable sorting algo, and in-place
+//this basically shifts previous values to the right until we reach a value that is smaller than the current value, and we place the current value at that values index+1
 var insertionSort = function(array) {
 
   for (var i = 1; i < array.length; i++) {
