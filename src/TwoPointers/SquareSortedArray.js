@@ -16,6 +16,7 @@ const make_squares = function(arr) {
   while (left <= right) {
     let leftVal = arr[left]**2;
     let rightVal = arr[right]**2;
+    //starting to add to squares array from the end
     if (leftVal > rightVal) {
       squares[nextIndexToAddTo] = leftVal;
       left++;

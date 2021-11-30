@@ -44,6 +44,9 @@ Follow up: Can you solve it in O(n) time complexity?
 
 
 //O(N)
+//where will you have to place the minimum element and the maximum element such that the array will be sorted?
+//we find the minimum val going up the array where sort order is incorrect, and the maximum going down the array where sort order is incorrect
+//which tells us where we should start and end our sort
 var findUnsortedSubarray = function(nums) {
 
   var min = Infinity;
@@ -67,7 +70,7 @@ var findUnsortedSubarray = function(nums) {
   for (var i = 0; i < nums.length; i++) {
       if (nums[i] > min) {
           l = i;
-          break;
+          break; //breaking is critical, or else this value will get updated
       }
   }
   //loop through from the right to the left, and track the first index where the val is less than the maximum
