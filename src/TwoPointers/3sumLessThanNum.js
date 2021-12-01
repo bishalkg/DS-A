@@ -43,7 +43,7 @@ Sorting the array will take O(N * logN)O(N∗logN). The searchPair() will take O
 ​​ ), which is asymptotically equivalent to O(N^3).
 
 Space complexity#
-The space complexity of the above algorithm will be O(N)O(N) which is required for sorting if we are not using an in-place sorting algorithm.
+The space complexity of the above algorithm will be O(N) which is required for sorting if we are not using an in-place sorting algorithm.
 
 */
 
@@ -68,6 +68,7 @@ function search_pair(arr, target_sum, first, triplets) {
       for (i = right; i > left; i--) { //this is the only difference, we iterate backwards to push all the sums
         triplets.push([arr[first], arr[left], arr[i]]);
       }
+      //was less than target sum so move left up to find more less than target sum
       left += 1;
     } else {
       right -= 1; // we need a pair with a smaller sum
@@ -75,4 +76,4 @@ function search_pair(arr, target_sum, first, triplets) {
   }
 }
 
-//O(N^3)
+//O(N^3) time and O(N) space

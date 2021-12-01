@@ -18,11 +18,14 @@ for (var i = 0; i < nums.length; i++) {
   var right = nums.length-1;
   while (left < right) {
     var currSum = currVal + nums[left] + nums[right];
+    //find the abs value of the target to the currSum
     var currDiff = Math.abs(target - currSum);
+    //update mindDiff and candidate Sum if the current is smaller
     if (currDiff < minDiff) {
         minDiff = currDiff;
         candidate = currSum;
     }
+
     if (target > currSum) {
       left++;
     } else {
@@ -36,7 +39,7 @@ for (var i = 0; i < nums.length; i++) {
 return candidate;
 };
 
-//this one doesnt work bc candidate loses its scoping or something, even if the value changes in findCandidate, it still is equal to Infinity when it returns to the original function scope
+//this one doesnt work bc candidate loses its scoping or something, even if the value changes in findCandidate, it still is equal to Infinity when it returns to the original function scope //could return candidate in the findCandidate function and assign it in the original function to candidate variable
 // const triplet_sum_close_to_target = function(arr, target_sum) {
 //   arr.sort((a,b) => a-b);
 //   var candidate = Infinity;
