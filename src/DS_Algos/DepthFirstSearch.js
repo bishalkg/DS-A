@@ -19,13 +19,17 @@ class Tree {
 
   DFinOrder(node, list=[]) {
     if(!node) return [];
+
     if (node.left) {
       this.DFinOrder(node.left, list);
     }
+
     list.push(node.value);
+
     if (node.right) {
       this.DFinOrder(node.right, list)
     }
+
     return list;
   }
 

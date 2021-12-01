@@ -34,6 +34,7 @@ var mergeSort = function(array) {
   // return merged;
 }
 
+
 var merge = function(left, right) {
   var sorted = [];
   var leftPointer = 0;
@@ -60,7 +61,7 @@ var merge = function(left, right) {
 //Space: worst O(1)
 //use when array is small or mostly sorted
 //a stable sorting algo, and in-place
-//this basically shifts previous values to the right until we reach a value that is smaller than the current value, and we place the current value at that values index+1
+//this basically shifts previous values to the right until we reach a value that is smaller than the current value, and we place the current value at that smaller values index+1
 var insertionSort = function(array) {
 
   for (var i = 1; i < array.length; i++) {

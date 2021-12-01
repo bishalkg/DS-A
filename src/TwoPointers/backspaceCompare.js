@@ -86,6 +86,7 @@ var backspaceCompare = function(s, t) {
   var backJcount = 0;
   //start from the ends of the strings
   while (i >= 0 || j >= 0) { //this takes care of if the indices are no longer at the same positions, or one string was longer than the other post backspaces
+
     while (i >= 0) {
       if (s[i] === '#') {
         backIcount ++;  //if the current val is #, then count up number of backspaces (#), and move index down
