@@ -68,6 +68,7 @@ while (t[j] === '#') {
 }
 s2.push(t[j]);
 }
+
 var k = 0;
 while (k < t.length) {
   if (s1[k] !== s2[k]) return false;
@@ -86,8 +87,8 @@ var backspaceCompare = function(s, t) {
   var backJcount = 0;
   //start from the ends of the strings
   while (i >= 0 || j >= 0) { //this takes care of if the indices are no longer at the same positions, or one string was longer than the other post backspaces
-
-    while (i >= 0) {
+                            //"ab##" "c#d#", here i will be 0, and j will be 1 after the first while loop reductions, and -1 and 0 before the second outer while loop
+    while (i >= 0) { //bc no more chars to count if index is less than 0
       if (s[i] === '#') {
         backIcount ++;  //if the current val is #, then count up number of backspaces (#), and move index down
         i--;
@@ -114,6 +115,7 @@ var backspaceCompare = function(s, t) {
     //this leaves us with the next appropriate indices for the strings, so now we can compare
     if (s[i] !== t[j]) return false;
     if ((i >= 0) !== (j >=0)) return false; //if one of the indices has gone below 0, we've gone past the end of one of the strings
+    // if (si < 0 || ti < 0) return false; //this doesnt work for "ab##" "c#d#" bc both indices will be less than 0, and both will result in "", which is true
 
 
     //count down at each loop

@@ -24,7 +24,7 @@ Output: true
 //reverse the linked list from the middle node on
 //start pointer at original head, and at the new head (previous will be pointing to the new head since the while (curr) breaks when curr is null)
 //while neither heads are null, compare their values, if the vals are different, then return false, else advance both
-//return false if true hasn't returned
+//return true if false hasn't returned
 var isPalindrome = function(head) {
   if (!head) return true;
 

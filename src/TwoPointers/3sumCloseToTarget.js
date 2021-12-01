@@ -9,7 +9,7 @@ var threeSumClosest = function(nums, target) {
   nums.sort((a,b) => a-b);
 var minDiff = Infinity; //keep track of the minimum difference between the target and the currentSum
 var candidate = Infinity; //this will store the currentSum that has the minimum difference from the target
-for (var i = 0; i < nums.length; i++) {
+for (var i = 0; i < nums.length-2; i++) {
   if (i > 0 && nums[i] === nums[i-1]) {
     continue;
   }

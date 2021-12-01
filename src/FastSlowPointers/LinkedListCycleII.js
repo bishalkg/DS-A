@@ -22,7 +22,7 @@ var detectCycle = function(head) {
   if (!head || !head.next) return null;
   var hashSet = new Set();
   while (head) {
-      if (hashSet.has(head)) {
+      if (hashSet.has(head)) { //reference equality
           return head;
       } else {
           hashSet.add(head)
@@ -34,7 +34,7 @@ var detectCycle = function(head) {
 
 
 //O(N) time and O(1) space
-//start with finding if LL has a cycle or not, at which point slow/fast will be on a node within the cycle
+//start with finding if LL has a cycle or not, at which point slow=fast will be on a node within the cycle
 //if there is a cycle, start a pointer at head, and move both the slow or fast pointer and the new pointer up by 1 until they meet, and return that
 var detectCycle = function(head) {
   if (!head || !head.next) return null;

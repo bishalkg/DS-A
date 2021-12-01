@@ -42,9 +42,9 @@ var findpair = function(nums, targetSum, left, result) {
 }
 
 var threeSum = function(nums) {
-  nums.sort((a,b)=> a-b);
+  nums.sort((a,b)=> a-b); //O(NlogN)
   var res = [];
-  for (var i = 0; i < nums.length-2; i++) {
+  for (var i = 0; i < nums.length-2; i++) { //O(N^2)
       if (i > 0 && nums[i] === nums[i-1]) {
           continue;
       }

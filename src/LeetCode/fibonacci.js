@@ -10,7 +10,7 @@ var fibonacci = function(number) {
 var fibonacciIterative = function(number) {
   var seq = [0, 1];
   for (var i = 2; i < number + 1; i++) {
-    array.push(seq[i - 1] + seq[i - 2]);
+    seq.push(seq[i - 1] + seq[i - 2]);
   }
   return seq[number];
 }

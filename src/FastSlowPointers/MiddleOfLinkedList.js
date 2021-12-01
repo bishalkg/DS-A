@@ -15,7 +15,7 @@ If there are two middle nodes, return the second middle node.
 
 */
 
-//move the fast pointer twice is much as the slow pointer, until the fast pointer reaches null
+//move the fast pointer twice as much as the slow pointer, until the fast pointer reaches null
 var middleNode = function(head) {
   var slow = head;
   var fast = head;
