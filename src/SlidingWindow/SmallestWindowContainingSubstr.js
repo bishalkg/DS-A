@@ -48,7 +48,7 @@ Follow up: Could you find an algorithm that runs in O(m + n) time?
 */
 
 
-
+//this one kindof is cumulative of all the other sliding problems //the one after this is the optimal solution
 var minWindow = function(s, t) {
 
   var freqMap = {};

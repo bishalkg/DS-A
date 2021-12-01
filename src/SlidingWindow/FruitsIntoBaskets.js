@@ -94,7 +94,7 @@ var totalFruit = function(fruits) {
       counter[fruits[end]] = 0;
     }
     counter[fruits[end]]++;
-
+    //now we can update the max window length, but we need to check if the coutner object only had 2 types of fruits/chars in it first and shrink if needed
 
     //while more than two fruits are in our freqMap
     while (Object.keys(counter).length > 2) {

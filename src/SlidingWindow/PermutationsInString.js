@@ -35,6 +35,7 @@ s1 and s2 consist of lowercase English letters.
 //s1 is the pattern
 //s2 is the string
 
+//boolean version of find all anagrams
 var checkInclusion = function(s1, s2) {
   var freqMap = {};
   for (var i of s1) {

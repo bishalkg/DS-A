@@ -63,8 +63,10 @@ var findAnagrams = function(s, p) {
 
       if (Object.keys(freqMap).length === matches) result.push(start);
 
+      //if the window size is greater or equal to the anagram size
       if ((end -start+1) >= p.length) {
 
+        //reverse what was done in the first step with the current char at the start index of the window
           if (s[start] in freqMap) {
               if (freqMap[s[start]] === 0) {
                   matches--;
