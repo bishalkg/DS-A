@@ -40,7 +40,7 @@ var numSubarrayProductLessThanK = function(nums, k) {
   var start = 0;
   for (var end = 0; end < nums.length; end++) {
     product*= nums[end]; //multiply for current product
-    while (product >= target) { //shrink window if product is greater than target
+    while (product >= target) { //shrink window if product is greater or equal to target
       product /= nums[start];
       start++;
     }

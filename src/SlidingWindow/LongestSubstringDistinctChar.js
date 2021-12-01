@@ -43,7 +43,7 @@ s consists of English letters, digits, symbols and spaces.
 
 
 
-//O(N)
+//O(N) optimal solution
 var lengthOfLongestSubstring = function(s) {
   var maxlength = 0;
   var start = 0;
