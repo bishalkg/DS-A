@@ -27,5 +27,5 @@ var maxSubArray = function(nums) {
 
 
 
-//start at the second index (i=1) and ask it, is it better to start over with this index? Or to add this index to the previous max stored at (i-1)
+//start at the second index (i=1) and ask it, is it better to start over with this index? Or to add this index to the previous contiguous sum stored at (i-1)
 //alternatively, we can store the currsum as a variable instead of mutating the array
