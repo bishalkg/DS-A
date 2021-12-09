@@ -63,7 +63,7 @@ var merge = function(intervals) {
   var merged = [currInterval];
 
   for (var i = 1; i < intervals.length; i++) {
-      if (intervals[i][0] <= currInterval[1]) {
+      if (intervals[i][0] <= currInterval[1]) { //if the start of the next interval is less than the end of the current interval
           currInterval[1] = Math.max(currInterval[1], intervals[i][1]);
       } else {
           currInterval = intervals[i]; //reassign to the new interval

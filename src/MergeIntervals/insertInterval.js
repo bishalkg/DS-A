@@ -28,6 +28,7 @@ var insert = function(intervals, newInterval) {
   var result = [];
   var i = 0;
 
+  //first check if the current interval in intervals should lie to the left of the newInterval
   while (i < intervals.length && intervals[i][1] < newInterval[0]) { //while intervals are less than the new interval, push them to result
                                                                       //we will stop where the next interval can be merged, or starts a new interval
       result.push(intervals[i]);
