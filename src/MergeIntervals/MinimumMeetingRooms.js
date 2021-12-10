@@ -11,13 +11,21 @@ occur in any of the two rooms later.
 */
 
 
-//we need to keep track of the last earliest ending meeting, to compare to the start of the next meeting
+//we need to keep track of the last earliest ending meeting, to compare to the start of the next meeting, this is done using a minHeap
 
 //A min Heap will store all active meetings, and we will track the maximum length of the heap and return that
 //if the start of the next meeting is >= the end of the meeting at the root of the minHeap, remove it from the minHeap
   //this represents that the meeting room is now open for another meeting, since the start of the next meeting is after the end of the last earliest ending meeting
 //always push the current meeting into the heap
 //track the minRooms by keeping track of the longest MinHeap
+/*
+Sort all the meetings on their start time.
+Create a min-heap to store all the active meetings. This min-heap will also be used to find the active meeting with the smallest end time.
+Iterate through all the meetings one by one to add them in the min-heap. Let’s say we are trying to schedule the meeting m1.
+Since the min-heap contains all the active meetings, so before scheduling m1 we can remove all meetings from the heap that have ended before m1, i.e., remove all meetings from the heap that have an end time smaller than or equal to the start time of m1.
+Now add m1 to the heap.
+The heap will always have all the overlapping meetings, so we will need rooms for all of them. Keep a counter to remember the maximum size of the heap at any time which will be the minimum number of rooms needed.
+*/
 function min_meeting_rooms(meetings) {
   // sort the meetings by start time
   meetings.sort((a, b) => a.start - b.start);
@@ -58,7 +66,7 @@ function minMeetingRooms(intervals) {
     if (startTimes[start] < endTimes[end]) { //new meeting is starting
       meetingsGoingOn++;
       start++;      //advance pointer
-    } else {
+    } else { //a meeting is ending
       meetingsGoingOn--;
       end++;
     }
