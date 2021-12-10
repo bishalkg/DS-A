@@ -34,14 +34,15 @@ var intervalIntersection = function(firstList, secondList) {
   var j = 0;
   while (i < firstList.length && j < secondList.length) {
 
-      var aOverb = firstList[i][0] <= secondList[j][0] && firstList[i][1] >= secondList[j][0];
-      var bOvera = secondList[j][0] <= firstList[i][0] && secondList[j][1] >= firstList[i][0];
+    //check if firstLists start is less than the secondLists start, or the opposite --- so we know we are checking in sorted order
+      var aOverb = firstList[i][0] <= secondList[j][0] && firstList[i][1] >= secondList[j][0]; //firstLists end is greater/= secondLists start -- merge
+      var bOvera = secondList[j][0] <= firstList[i][0] && secondList[j][1] >= firstList[i][0];  //secondLists end end is greater/= firstLists start -- merge
 
-      if (aOverb || bOvera) {
+      if (aOverb || bOvera) { //if either are true, we can find the intersection start and ends, start = maximum of the starts, end = minimum of the ends
           result.push([Math.max(firstList[i][0],secondList[j][0]), Math.min(firstList[i][1],secondList[j][1])])
       }
 
-      //remove the interval with the smaller endpoint
+      //remove the interval with the smaller endpoint, advance the pointer from the interval with the lower endpoint bc this cant
       if (firstList[i][1] < secondList[j][1]) {
           i++;
       } else {

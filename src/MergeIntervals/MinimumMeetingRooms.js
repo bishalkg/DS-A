@@ -51,7 +51,7 @@ function min_meeting_rooms(meetings) {
 // go through each point in sorted order
   //if starting a new meeting +1 meetingsGoingOn
   //if ending a meeting -1 meetingsGoingOn
-  //if end and start are === one is ending, the other is starting so +1 and -1; visit the ending first if theres a tie, meeting must end before the next starts
+  //if endTime and startTime are === one is ending, visit the ending first if theres a tie, meeting must end before the next starts
 //Math.max(meetingsGoingOn, current Meetings Going On)
 
 function minMeetingRooms(intervals) {
