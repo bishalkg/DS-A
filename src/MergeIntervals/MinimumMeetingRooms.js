@@ -35,7 +35,7 @@ function min_meeting_rooms(meetings) {
   for (i = 0; i < meetings.length; i++) {
     // remove all the meetings that have ended
     while (minHeap.length > 0 && meetings[i].start >= minHeap.peek().end) {
-      minHeap.pop();
+      minHeap.pop(); //remove the last earliest ending meeting from the heap
     }
     // add the current meeting into min_heap
     minHeap.push(meetings[i]);

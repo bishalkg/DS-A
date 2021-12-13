@@ -64,9 +64,9 @@ var merge = function(intervals) {
 
   for (var i = 1; i < intervals.length; i++) {
       if (intervals[i][0] <= currInterval[1]) { //if the start of the next interval is less than the end of the current interval
-          currInterval[1] = Math.max(currInterval[1], intervals[i][1]);
+          currInterval[1] = Math.max(currInterval[1], intervals[i][1]); //since is sorted by first el, we only have to change the second el to max of the two
       } else {
-          currInterval = intervals[i]; //reassign to the new interval
+          currInterval = intervals[i]; //reassign to the new interval if there is no overlap between the two intervals
           merged.push(currInterval);  //push that interval into the result array and repeat...
       }
   }

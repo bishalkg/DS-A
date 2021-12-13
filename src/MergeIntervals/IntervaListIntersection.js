@@ -42,7 +42,7 @@ var intervalIntersection = function(firstList, secondList) {
           result.push([Math.max(firstList[i][0],secondList[j][0]), Math.min(firstList[i][1],secondList[j][1])])
       }
 
-      //remove the interval with the smaller endpoint, advance the pointer from the interval with the lower endpoint bc this cant
+      //remove the interval with the smaller endpoint, advance the pointer from the interval with the lower endpoint bc this cant intersect with the next interval, since the intervals are in sorted order
       if (firstList[i][1] < secondList[j][1]) {
           i++;
       } else {

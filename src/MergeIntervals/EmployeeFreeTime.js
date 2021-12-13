@@ -27,7 +27,7 @@ const find_employee_free_time = function(schedule) {
   for (var i = 1; i < allScheds.length; i++) {
       var currStart = allScheds[i][0];
       var currEnd = allScheds[i][1];
-      if (currStart > lastEnd) {
+      if (currStart > lastEnd) { //all intervals are sorted, so if we find an interval gap, we can add that to our result
           result.push([lastEnd, currStart]);
       }
       lastEnd = Math.max(lastEnd, currEnd);
