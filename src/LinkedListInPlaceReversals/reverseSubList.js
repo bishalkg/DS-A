@@ -7,6 +7,32 @@ Connect the p-1 and q+1 nodes to the reversed sub-list.
 
 
 
+var reverseBetween = function(head, left, right) {
+  if (left === right) return head;
+
+  var dummy = {next:head};
+  var leftPrev = dummy;
+  var curr = head;
+  for (var i = 0; i < left-1; i++) {
+      leftPrev = curr;
+      curr = curr.next;
+  }
+
+  var newHead = null;
+  for (var i = 0; i < (right-left+1); i++) {
+      var next = curr.next;
+      curr.next = newHead;
+      newHead = curr;
+      curr = next;
+  }
+
+  leftPrev.next.next = curr;
+  leftPrev.next = newHead;
+
+  return dummy.next
+
+};
+
 function reverse_sub_list(head, p, q) {
   if (p === q) {
     return head;
