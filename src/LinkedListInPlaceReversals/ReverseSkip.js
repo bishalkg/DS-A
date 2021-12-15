@@ -5,6 +5,7 @@ Given the head of a LinkedList and a number ‘k’, reverse every alternating �
 If, in the end, you are left with a sub-list with less than ‘k’ elements, reverse it too.
 */
 
+//same as reverse K nodes, with a twist
 const reverse_alternate_k_elements = function(head, k) {
   if (!head || k <= 1) return head;
   let prev = null;
@@ -30,7 +31,7 @@ const reverse_alternate_k_elements = function(head, k) {
 
     groupEnd.next = curr;
 
-
+    //instead of resetting prev, we advance prev and curr k times to skip
     let j = 0;
     while (curr && j < k) {
       prev = curr;

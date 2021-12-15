@@ -105,7 +105,7 @@ const reverse_every_k_elements = function(head, k) {
 
   let prev = null;
   let curr = head;
-  while (true) {
+  while (true) { //while (curr)
     let groupPrev = prev;
     let groupEnd = curr;
 
@@ -125,7 +125,7 @@ const reverse_every_k_elements = function(head, k) {
     }
 
     groupEnd.next = curr;
-    if (curr === null) break;
+    if (curr === null) break; //if using while(curr) dont need this break
 
     prev = groupEnd; //set the prev pointer to the end of the previous group
 
