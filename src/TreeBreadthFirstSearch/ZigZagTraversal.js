@@ -14,7 +14,7 @@ const traverse = function(root) {
     let levelSize = queue.length;
     let levelNodes = []; //def use deque for unshift
 
-    for (let i = 0; i < levelSize; i++) {
+    for (let i = 0; i < levelSize; i++) { //we only iterate levelSize times so no need to worry about shifting off curr.left and curr.right of current level
       let curr = queue.shift();
 
       if (reverse) {  //if nodes should be reversed, pushinto levelNodes in reverse order throughout this for loop, since we are looping over one level of nodes
