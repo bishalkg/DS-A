@@ -21,6 +21,7 @@ Output: [4,5,1,2,3]
 
 */
 
+//O(N) time, O(1) space
 var rotateRight = function(head, k) {
   if (!head || !k) return head;
 
