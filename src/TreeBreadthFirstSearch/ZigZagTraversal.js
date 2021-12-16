@@ -10,7 +10,7 @@ const traverse = function(root) {
   let reverse = false; //first round its just root node so no need to reverse
 
 
-  while (queue.length > 0) {
+  while (queue.length > 0) {  //each round of the while loop is iterating over the next level of nodes
     let levelSize = queue.length;
     let levelNodes = []; //def use deque for unshift
 
@@ -32,7 +32,7 @@ const traverse = function(root) {
 
     }
     result.push(levelNodes);
-    reverse = !reverse;
+    reverse = !reverse; //every level reverse the order
   }
 
   return result;
