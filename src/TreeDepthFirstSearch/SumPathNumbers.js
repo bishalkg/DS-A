@@ -24,7 +24,7 @@ A leaf node is a node with no children.
 */
 
 
-//my solution
+//my solution time O(N) space O(NlogN) for size of allPaths see pathsforSum discussion
 const find_sum_of_path_numbers = function(root) {
 
   let allPathVals = findAllPaths(root, '', []);
