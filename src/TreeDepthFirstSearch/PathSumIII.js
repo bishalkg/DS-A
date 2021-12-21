@@ -33,8 +33,8 @@ var findPathCount = function(currNode, targetSum, currPath) {
   }
 
   //sum the targetCount for all possible paths from the currentNode
-  targetCount+=findPathCount(currNode.left, targetSum, currPath);
-  targetCount+=findPathCount(currNode.right, targetSum, currPath);
+  targetCount+=findPathCount(currNode.left, targetSum, currPath); //sum the potential targetSums on the left
+  targetCount+=findPathCount(currNode.right, targetSum, currPath); //sum the potential targetSums on the right
 
   //pop currentNode off of the stack to backtrack
   currPath.pop();

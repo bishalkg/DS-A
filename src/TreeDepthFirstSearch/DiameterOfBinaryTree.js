@@ -17,7 +17,7 @@ The length of a path between two nodes is represented by the number of edges bet
 */
 
 
-//O(N) time and space
+//O(N) time and space //this solves leetcode, where diameter is the distance betweeen nodes and not the number of nodes like in grokkings
 var diameterOfBinaryTree = function(root) {
   if (!root) return 0;
   var diameter = 0;

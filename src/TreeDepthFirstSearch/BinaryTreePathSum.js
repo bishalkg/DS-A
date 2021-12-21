@@ -12,6 +12,6 @@ const has_path = function(root, sum) {
   }
 
 
-  return has_path(root.left, sum - root.value) || has_path(root.right, sum - root.value); //sub the current roots value, if either returns true, the  original functional call will return true
+  return has_path(root.left, sum - root.value) || has_path(root.right, sum - root.value); //sub the current roots value, if either returns true, the  original function call will return true
   //As the left-child or right-child returns 'true', return 'true' without processing further.
 };

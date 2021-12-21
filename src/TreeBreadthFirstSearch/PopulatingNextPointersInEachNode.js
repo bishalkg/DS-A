@@ -52,29 +52,3 @@ var connect = function(root) {
 
 };
 
-
-//grokkings
-function connect_all_siblings(root) {
-  if (root === null) {
-    return;
-  }
-
-  const queue = new Deque();
-  queue.push(root);
-  let currentNode = null,
-    previousNode = null;
-  while (queue.length > 0) {
-    currentNode = queue.shift();
-    if (previousNode !== null) {
-      previousNode.next = currentNode;
-    }
-    previousNode = currentNode;
-    // insert the children of current node in the queue
-    if (currentNode.left !== null) {
-      queue.push(currentNode.left);
-    }
-    if (currentNode.right !== null) {
-      queue.push(currentNode.right);
-    }
-  }
-}
