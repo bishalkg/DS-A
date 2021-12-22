@@ -64,6 +64,7 @@ MedianFinder.prototype.addNum = function(num) {
 
 
    if (this.maxHeap.size() > this.minHeap.size()+1) {         //if the smallvalues heap size is greater than 1+ the size of the largervalues heap, move the top value from the maxHeap to the minHeap (move the max value from the maxHeap to the minHeap) so that the sizes of the two heaps differ by at most 1 only
+    //if the maxHeap size = minHeapsize+1, this is ok, if we have an odd number of vals, we want the maxHeap to contain the extra val, but if it every gets greater than this, then transfer
        this.minHeap.enqueue(this.maxHeap.dequeue().element);
    } else if (this.minHeap.size() > this.maxHeap.size()) {    //if the largervalues heap is larger than the smallervalues heap, move value from the largervalues heap to the smaller values heap
        this.maxHeap.enqueue(this.minHeap.dequeue().element);
@@ -90,9 +91,9 @@ var MedianFinder = function () {
 
 
 MedianFinder.prototype.addNum = function (num) {
-  this.small.enqueue(num);
+  this.small.enqueue(num);                          //this logic is much simpler than above: add it to the maxHeap, then remove the top val and add it to the minHeap
   this.large.enqueue(this.small.dequeue().element);
-  if (this.small.size() < this.large.size()) {
+  if (this.small.size() < this.large.size()) {      //BUT if the size of the maxHeap becomes smaller than the size of the minHeap, then the top val back to maxHeap
     this.small.enqueue(this.large.dequeue().element);
   }
 };
