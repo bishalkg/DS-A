@@ -28,7 +28,7 @@ var maxPathSum = function(root) {
       if (!currNode) return 0;
       var leftSum = findMax(currNode.left);
       var rightSum = findMax(currNode.right);
-      leftSum = Math.max(leftSum, 0); //ignore negative sums
+      leftSum = Math.max(leftSum, 0); //ignore negative sums, Since we need to find the overall maximum sum, we should ignore any path which has an overall negative sum.
       rightSum = Math.max(rightSum, 0); //ignore negative sums
       maxSum = Math.max(maxSum, leftSum + rightSum + currNode.val);
 
