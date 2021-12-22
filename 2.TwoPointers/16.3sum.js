@@ -1,3 +1,26 @@
+/*
+15. 3Sum
+Medium
+
+14843
+
+1422
+
+Add to List
+
+Share
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+Notice that the solution set must not contain duplicate triplets.
+
+
+
+Example 1:
+
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+
+*/
 
 //first we want to get the nums in sorted order
 //for every value of nums, we want to check if there are two values to the right of this value that sum to negative of this value ==> meaning 3sum =0
@@ -41,6 +64,7 @@ var findpair = function(nums, targetSum, left, result) {
 
 }
 
+//without helper function
 var threeSum = function(nums) {
   nums.sort((a,b)=> a-b); //O(NlogN)
   var res = [];
