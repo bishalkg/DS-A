@@ -33,7 +33,7 @@ var maxPathSum = function(root) {
       maxSum = Math.max(maxSum, leftSum + rightSum + currNode.val);
 
       return currNode.val + Math.max(leftSum, rightSum);
-  }
+  };
   findMax(root);
   return maxSum;
 }
