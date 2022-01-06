@@ -13,18 +13,21 @@ var maxSumSizeK = function(array, k) {
 }
 
 //sliding window method, FIXED SIZE WINDOW
-var maxSumSizeKSliding = function(array, k) {
-  var max = -Infinity;
-  var currSum = 0;
-  for (var i = 0; i < array.length; i++) {
-    currSum += array[i];
-    if (i >= (k-1)) { //this will set the window of size k, as long as the index is greater than or equal to the window size we want, we know the window will be of fixed size
-                      //if i is index 2, we've seen 3 values, if i is at index i, we've seen i+1 values
-      max = Math.max(max, currSum);
-      currSum -= array[i - (k-1)];
+function max_sub_array_of_size_k(k, arr) {
+  let maxSum = 0,
+    windowSum = 0,
+    windowStart = 0;
+
+  for (window_end = 0; window_end < arr.length; window_end++) {
+    windowSum += arr[window_end]; // add the next element
+    // slide the window, we don't need to slide if we've not hit the required window size of 'k'
+    if (window_end >= k - 1) {
+      maxSum = Math.max(maxSum, windowSum);
+      windowSum -= arr[windowStart]; // subtract the element going out
+      windowStart += 1; // slide the window ahead
     }
   }
-  return max;
+  return maxSum;
 }
 
 // console.log(maxSumOfSizeK([4,2,1,7,8,1,2,8,1,0], 3))
