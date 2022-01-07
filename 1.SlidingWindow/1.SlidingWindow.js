@@ -123,8 +123,8 @@ var minimizeSum = function(array, sum) {
   for (var end = 0; end < array.length; end++) {
     currSum+= array[end];
     while (currSum >= sum) {//once we have a window where the sum is >= target sum, shrink the window to see if a smaller subarray has a currSum >= targetsum
-      min = Math.min(min, end - start +1);
-      currSum-= array[start];
+      min = Math.min(min, end - start + 1); //end-start+1 gives window size
+      currSum -= array[start];
       start++;
     }
 
@@ -139,7 +139,7 @@ var AllAvgSizeK = function(array, k) {
   var start = 0;
   for (var end = 0; end < array.length; end++) {
     currSum += array[end];
-    if (end >= (k-1)) { // end-start+1 === k
+    if (end >= (k-1)) { //or end-start+1 === k
       averages.push(currSum/k);
       currSum -= array[start];
       start++

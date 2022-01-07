@@ -23,7 +23,7 @@ function smallest_subarray_with_given_sum(s, arr) {
     windowSum += arr[windowEnd]; // add the next element
     // shrink the window as small as possible until the 'window_sum' is smaller than 's'
     while (windowSum >= s) {
-      minLength = Math.min(minLength, windowEnd - windowStart + 1);
+      minLength = Math.min(minLength, windowEnd - windowStart + 1); //the key logic for this problem, rest is basic sliding window pattern
       windowSum -= arr[windowStart];
       windowStart += 1;
     }

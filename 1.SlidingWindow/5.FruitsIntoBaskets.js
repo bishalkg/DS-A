@@ -84,6 +84,7 @@ return max;
 
 
 //this one slow, mine is faster!! but takes more space O(n)
+//same problem as #3 where k = 2
 var totalFruit = function(fruits) {
   var max = -Infinity;
   var start = 0;

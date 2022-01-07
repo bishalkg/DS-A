@@ -39,7 +39,7 @@ Submissions
 */
 
 
-
+//not actually sure how this one worked lol
 var longestOnes = function(nums, k) {
   var max = 0;
   var seenZeros = 0;
@@ -53,7 +53,38 @@ var longestOnes = function(nums, k) {
           start++;
       }
 
-      max = Math.max(max, end-start+1);
+      max = Math.max(max, end-start+1); //as long as we keep seeing too many zeros, the window will keep shrinking by 1 from the start as it expands by 1 at its end, the window size stays the same
   }
   return max;
 };
+
+
+
+//grokkings
+function length_of_longest_substring(arr, k) {
+  let windowStart = 0,
+    maxLength = 0,
+    maxOnesCount = 0;
+
+  // Try to extend the range [windowStart, windowEnd]
+  for (windowEnd = 0; windowEnd < arr.length; windowEnd++) {
+    if (arr[windowEnd] === 1) {
+      maxOnesCount += 1;
+    }
+
+    // Current window size is from windowStart to windowEnd, overall we have a maximum of 1s
+    // repeating 'maxOnesCount' times, this means we can have a window with 'maxOnesCount' 1s
+    // and the remaining are 0s which should replace with 1s.
+    // now, if the remaining 0s are more than 'k', it is the time to shrink and slide the window as we
+    // are not allowed to replace more than 'k' 0s
+    if ((windowEnd - windowStart + 1 - maxOnesCount) > k) { //as long as there are too many zeros, we will keep shrinking
+      if (arr[windowStart] === 1) {
+        maxOnesCount -= 1;
+      }
+      windowStart += 1;
+    }
+
+    maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+  }
+  return maxLength;
+}

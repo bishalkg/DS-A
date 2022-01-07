@@ -49,8 +49,8 @@ var lengthOfLongestSubstring = function(s) {
   var start = 0;
   var counter = {};
   for (var end = 0; end < s.length; end++) {
-    //if you see a character again ( s[end] ), shrink the window by setting start, but set start to the max of the current start or the index+1 at which the char was first observed. This makes sure that if you see a duplicate in s, start will be set such that it starts at the index after where it first appeared
-    //set start to the larger of two indices, either index+1 of where it last appeared, or where the start pointer is currently at, you don't want to go back to a lower index like I did the solutions below, bc then you're searching indices you've already serched
+    //if you see a character again ( s[end] ), shrink the window by setting start, but set start to the max of the current start or the index+1 at which the char was first observed. This makes sure that if you see a duplicate in s, start will be set such that it starts at the index after where it FIRST appeared
+    //set start to the larger of two indices, either index+1 of where it last appeared, or where the start pointer is currently at, you don't want to go back to a lower index like I did the solutions below, bc you've already shrunken the array up to that current start index, bc you found a duplicate before the current start index
     //instead, the end - start +1 keeps track of the strech of characters in the hash map
     if (counter[s[end]]) { //if the char has been seen before, set start to the index it was seen+1, leave start as is, whichever is larger index
       start = Math.max(start, counter[s[end]]);
@@ -62,6 +62,12 @@ var lengthOfLongestSubstring = function(s) {
   }
   return maxlength;
 };
+//^use freqMap to store { char: char'sLastIndex+1 ...}
+//iterate through string
+  //if the current char is already in freqMap, slide the start of the window to the max of: the index+1 of the char stored in the freqMap (the key will be the char and val will be its index+1) or the start variable; this avoids re-expanding the window, bc you've already shrunken the array bc you found a duplicate before the current start index
+  //compute the max length
+  //add the curr char to the freqMap with its val as its index+1
+//return max length
 
 
 //O(N^2) or close to, bc I backtrack the start index and start over the search lmao

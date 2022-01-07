@@ -53,3 +53,8 @@ function longest_substring_with_k_distinct(str, k) {
 
   return maxLength;
 }
+//loop over chars, add to freqMap if not seen or +1 if seen
+//while the total num of diff chars in the freqMap is greater than the required (k), eg. { a:1, b:2, c:1 } and k = 2
+  //remove the count of the first char in the window, if the count is now 0, delete it from the map
+  //slide the start of the window up by 1
+//compute the maxLength using end - start + 1

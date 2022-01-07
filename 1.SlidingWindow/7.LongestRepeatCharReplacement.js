@@ -35,6 +35,15 @@ var characterReplacement = function(s, k) {
   }
   return maxlen;
 };
+//iterate chars in string
+  //add char to freqMap
+  //compute the count of the char that repeats the most, its either the currentChar that was just iterated up or keep the last count
+  //if the window size - count of char that repeats the most is > k, means we can't swap any more values to keep the asked condition valid, so remove the count of the char at the first index, and advance the start of the window + 1
+  //compute the max length between the current window size or the previous computed maximum
+//return the max length
+
+
+
 
 
 //this ones slow
