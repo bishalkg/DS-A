@@ -39,7 +39,7 @@ Submissions
 */
 
 
-//not actually sure how this one worked lol
+/
 var longestOnes = function(nums, k) {
   var max = 0;
   var seenZeros = 0;

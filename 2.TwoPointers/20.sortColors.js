@@ -35,7 +35,7 @@ var sortColors = function(nums) {
     } else if (nums[i] === 1) {
       i++;
     } else {
-      //note: we don't know what the value at nums[high] is here, so we need to check its value in the next iteration, therefore we don't increment i++
+      //note: we don't know what the value at nums[high] is when swapped here, so we need to check its value in the next iteration, therefore we don't increment i++
       [nums[i], nums[high]] = [nums[high], nums[i]];
       high--;
     }
