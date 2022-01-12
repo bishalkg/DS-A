@@ -39,7 +39,7 @@ for (var i = 0; i < nums.length-2; i++) {
 return candidate;
 };
 
-//this one doesnt work bc candidate loses its scoping or something, even if the value changes in findCandidate, it still is equal to Infinity when it returns to the original function scope //could return candidate in the findCandidate function and assign it in the original function to candidate variable
+//return candidate in the findCandidate function and assign it in the original function to candidate variable
 // const triplet_sum_close_to_target = function(arr, target_sum) {
 //   arr.sort((a,b) => a-b);
 //   var candidate = Infinity;
@@ -47,7 +47,7 @@ return candidate;
 //     if (i > 0 && arr[i] === arr[i-1]) {
 //       continue;
 //     }
-//     findCandidate(arr, arr[i], i+1, target_sum, candidate);
+//     candidate = findCandidate(arr, arr[i], i+1, target_sum, candidate);
 
 //   }
 
@@ -65,6 +65,6 @@ return candidate;
 //     } else {
 //       right--;
 //     }
-
 //   }
+//  return candidate;
 // }

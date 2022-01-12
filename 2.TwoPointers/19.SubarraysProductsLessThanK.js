@@ -40,12 +40,13 @@ var numSubarrayProductLessThanK = function(nums, k) {
   var start = 0;
   for (var end = 0; end < nums.length; end++) {
     product*= nums[end]; //multiply for current product
-    while (product >= target) { //shrink window if product is greater or equal to target
+    while (product >= k) { //shrink window if product is greater or equal to target
       product /= nums[start];
       start++;
     }
     count+= end-start+1; //this will account for the current number itself as a subarray, and for all the subarrays before it from start - end
                           //this is because we can ONLY HAVE POSITIVE NUMBERS, and if start to end product is less than the target, then the subarrays below it are also solutions
+                          // nums = [10,5,2,6], k = 100 => on first iteration[10], on second we want [10,5] and [5] thus we use end-start+1
   }
   return count;
 };

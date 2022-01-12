@@ -17,6 +17,35 @@ Do not modify the linked list.
 */
 
 
+//O(N) time and O(1) space
+//start with finding if LL has a cycle or not, at which point slow=fast will be on a node within the cycle
+//if there is a cycle, start a pointer at head, and move both the slow or fast pointer and the new pointer up by 1 until they meet, and return that
+var detectCycle = function(head) {
+    if (!head || !head.next) return null;
+      var hasCycle = false;
+      var slow = head;
+      var fast = head;
+      while (fast !== null && fast.next !== null) {
+        //start by moving slow and fast bc or else they will be equivalent since tjhey boths tart at
+          slow = slow.next;
+          fast = fast.next.next;
+          if (fast === slow) {
+              hasCycle = true;
+              break;
+          }
+      }
+      if (hasCycle) {
+          var slow2 = head;
+          while (slow !== slow2) {
+              slow = slow.next;
+              slow2 = slow2.next;
+          }
+          return slow;
+      }
+      return null;
+  };
+
+
 //O(N) time and space solution
 var detectCycle = function(head) {
   if (!head || !head.next) return null;
@@ -33,30 +62,3 @@ var detectCycle = function(head) {
 };
 
 
-//O(N) time and O(1) space
-//start with finding if LL has a cycle or not, at which point slow=fast will be on a node within the cycle
-//if there is a cycle, start a pointer at head, and move both the slow or fast pointer and the new pointer up by 1 until they meet, and return that
-var detectCycle = function(head) {
-  if (!head || !head.next) return null;
-    var hasCycle = false;
-    var slow = head;
-    var fast = head;
-    while (fast !== null && fast.next !== null) {
-      //start by moving slow and fast bc or else they will be equivalent since tjhey boths tart at
-        slow = slow.next;
-        fast = fast.next.next;
-        if (fast === slow) {
-            hasCycle = true;
-            break;
-        }
-    }
-    if (hasCycle) {
-        var slow2 = head;
-        while (slow !== slow2) {
-            slow = slow.next;
-            slow2 = slow2.next;
-        }
-        return slow;
-    }
-    return null;
-};

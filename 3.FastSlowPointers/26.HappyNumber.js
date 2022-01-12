@@ -65,9 +65,12 @@ var isHappy = function(n) {
 var findSumSquare = function(num) {
   var sum = 0;
   var current = num;
-  while (current !== 0) {
-      sum += (current % 10)**2;
-      current = Math.floor(current/10);
+  while (current !== 0) {  //repeat until flooring current returns 0
+      sum += (current % 10)**2; //take square of last digit
+      current = Math.floor(current/10); //divide by 10 and floor to get next digits place..etc
   }
   return sum;
 }
+//eg. 23
+//sum += (23%10)**2 = (3)^2
+//current = Math.floor(23/10) = 2

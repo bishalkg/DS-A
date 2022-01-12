@@ -126,7 +126,7 @@ var minWindow = function(s, t) {
           }
       }
 
-      while (matches === t.length) { //number of matches contains all chars of t
+      while (matches === t.length) { //number of matches contains all chars of t, do a while loop here to keep shrinking window from the left/start
           if ((end-windowStart+1) < minLength) { //if the current window length is less than the current minLength
               minLength = (end-windowStart+1); //update the minimum length
               substrStart = windowStart; //all you need is the length of the substr and where it starts to return the subtr later

@@ -37,24 +37,25 @@ var isPalindrome = function(head) {
 
 
   var curr = slow;
-  var previous = null;
+  var previous = null; //use var newHead = null;
   var following = curr;
   while (curr) {
-      following = following.next;
+      following = following.next; //if we use curr.next, don't need to initilize following outside of the loop, but then we would be creating a new var each loop
       curr.next = previous;
       previous = curr;
-      curr = following;
+      curr = following; //when curr is set to following = null, then previous is the new Head, could initialize previous as var newHead
   }
+
 
   var slow1 = head;
   var slow2 = previous;
 
 
   while (slow1 !== null && slow2 !== null) {
-      if (slow1.val !== slow2.val) return false;
+      if (slow1.val !== slow2.val) return false; //check each nodes value, if we find a mismatch, terminate and return false
       slow1 = slow1.next;
       slow2 = slow2.next;
   }
-  return true;
+  return true; //if no mismatches were found return true
 
 };

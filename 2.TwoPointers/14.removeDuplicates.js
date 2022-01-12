@@ -10,6 +10,10 @@ const remove_duplicates = function(arr) {
   }
   return nextNonDup+1;
 };
+//Algorithm
+//iterate array, if the current value is unique (by comparing the current value to the value at the nextNonDup index), advance nextNonDup and place this unique value there
+//nextNonDup/lastSeenDup will be the index after which the next unique value should go
+
 
 //grokkings
 function remove_duplicates(arr) {
@@ -57,6 +61,9 @@ Custom Judge:
 */
 
 //mine
+//Algorithm
+//iterate array, if the current val is not the target val, then swap curr val with lastSeenValIndex, and advance lastSeenValIndex index,
+//if the current val is not the target val, move the lastSeenValIndex to the right until the current val is the target val
 var removeElement = function(nums, val) {
   var lastSeenValIndex = 0;
   for (var i = 0; i < nums.length; i++) {
@@ -81,7 +88,7 @@ function remove_element(arr, key) {
   return nextElement;
 }
 
-
+console.log(removeElement([2, 2, 2, 5, 11], 5));
 
 //remove duplicates -> advance pointer, swap
 //remove elements -> swap, advance pointer

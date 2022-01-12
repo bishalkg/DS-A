@@ -27,23 +27,23 @@ var sortColors = function(nums) {
   var low = 0;
   var high = nums.length -1;
   var i = 0;
-  while (i <= high) {
+  while (i <= high) { //high will be decremented and filled with 2's, so only interate up to the first high index in the array
     if (nums[i] === 0) {
       [nums[i], nums[low]] = [nums[low], nums[i]];
       i++;
-      low++;
-    } else if (nums[i] === 1) {
+      low++; //position to place the next 0
+    } else if (nums[i] === 1) { //leave as is, move on to the next index
       i++;
     } else {
       //note: we don't know what the value at nums[high] is when swapped here, so we need to check its value in the next iteration, therefore we don't increment i++
       [nums[i], nums[high]] = [nums[high], nums[i]];
-      high--;
+      high--; //position to place the next 2
     }
   }
   return nums;
 }
-
-//iterate through the array, have a pointer at the position to place the next 0, and the next 2
+//Algorithm
+//iterate through the array, have a pointer at the position to place the next 0 (low), and the next 2 (high)
 //if currVal is a 0, then swap it with the 'low' position, and advance that pointer and i up by one
 //if the currVal is a 1, just keep iterating i++, do nothing
 //if the currVal is a 2, swap the currVal with the next 'high' position, and move the pointer down by one so that the next 2 will be placed before this position

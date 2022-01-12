@@ -19,8 +19,22 @@ You may not modify the values in the list's nodes. Only nodes themselves may be 
 */
 
 //my solution
+//Algorithm
+//move fast and slow pointers, till slow is on the 'middle' node
+//starting at slow pointer, reverse the LL
+//initialize a dummy varible to store the initial head
+//while head and newHead are not null
+  //store a reference to both head.next and newHead.next
+  //if head.next reaches newHead, then we're done with the reordering
+  //assign head.next to newHead
+  //assign newHead.next to head's original next (stored in next1 ref)
+  //advance the head and newHead pointers using the stored reference
+//return the dummy which stores the original head
+
 var reorderList = function(head) {
-  if (!head) return head;
+  if (head === null || head.next === null) {
+    return;
+  }
   var slow = head;
   var fast = head;
   while (fast !== null && fast.next !== null) {

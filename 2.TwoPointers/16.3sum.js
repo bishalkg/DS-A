@@ -79,7 +79,7 @@ var threeSum = function(nums) {
           var currSum = curr + nums[left] + nums[right];
           if (currSum === 0) {
               res.push([curr, nums[left], nums[right]]);
-              while (left < right && nums[left] === nums[left+1]) {
+              while (left < right && nums[left] === nums[left+1]) { //skip duplicates
                   left++;
               }
               while (left < right && nums[right] === nums[right-1]) {
