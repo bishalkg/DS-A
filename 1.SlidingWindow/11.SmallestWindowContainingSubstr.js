@@ -151,3 +151,67 @@ var minWindow = function(s, t) {
   return s.slice(substrStart, substrStart+minLength)
 
 };
+
+
+
+
+//reattempt
+// Input: s = "ADOBECODEBANC", t = "ABC"
+// Output: "BANC"
+// Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
+
+var minWindow = function(s, t) {
+    var freqMap = {};
+    for (var i = 0; i < t.length; i++) {
+        if (!(t[i] in freqMap)) {
+            freqMap[t[i]] = 0;
+        }
+        freqMap[t[i]]++;
+    }
+
+    var start = 0;
+    var substrStart = 0;
+    var minLength = s.length+1;
+    var matches = 0;
+
+    for (var end = 0; end < s.length; end++) {
+        if (freqMap[s[end]]) {
+            freqMap[s[end]]--;
+            if (freqMap[s[end]] >= 0) { //we add to matches if the value is greater than or equal to 0
+                matches++;
+            }
+        }
+
+        while(matches === t.length) {
+
+            if ((end-start+1) < minLength) {
+                minLength = end-start+1;
+                substrStart = start;
+            }
+
+            if (freqMap[s[start]]) {
+                if (freqMap[s[start]] === 0) { //yet we only subtract from matches if the value is 0, see explaination below
+                    matches--;
+                }
+                freqMap[s[start]]++
+            }
+
+            start++;
+        }
+
+
+    }
+
+    if (minLength > s.length) {
+        return ''
+    }
+
+    return s.slice(substrStart, substrStart+minLength)
+
+}
+
+//if our inputs were
+// s = "AADOBEC^ODEBANC", t = "ABC", up to ^ the freqMap would look like:
+// {A:1, B:1, C:1} => {A: -1, B: 0, C: 0}
+//since A is -1 here, and we only increment matches if A has val >= 0, it means the second A was not counted in matches,
+//thus, we only decrement matches if A:0 is true, and we add +1 back to A to account for the fact that there were 2 As to begin with, but now one is sliding out of the window.
