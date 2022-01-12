@@ -126,13 +126,14 @@ var minWindow = function(s, t) {
           }
       }
 
-      while (matches === t.length) {
-          if ((end-windowStart+1) < minLength) {
-              minLength = (end-windowStart+1); //all you need is the length of the substr and where it starts to return the subtr later
-              substrStart = windowStart;
+      while (matches === t.length) { //number of matches contains all chars of t
+          if ((end-windowStart+1) < minLength) { //if the current window length is less than the current minLength
+              minLength = (end-windowStart+1); //update the minimum length
+              substrStart = windowStart; //all you need is the length of the substr and where it starts to return the subtr later
           }
 
-          if (s[windowStart] in freqMap) {  //if the char at the start index is in the freqMap, we need to do some cleanup,
+          //the rest here is to slide the window, to do so, we need to update our freqMap to add back the char at the start index
+          if (s[windowStart] in freqMap) {  //if the char at the start index is in the freqMap, we need to do some cleanup, bc we added to matches and subtrated it from the freqMap earlier
               if (freqMap[s[windowStart]] === 0) { //if its freq is currently 0, decrement matches bc this was counted as a match before
                   matches--;
               }
